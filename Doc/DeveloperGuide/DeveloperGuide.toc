@@ -1,0 +1,15 @@
+\contentsline {chapter}{\numberline {1}Introduction}{ii}{}%
+\contentsline {section}{\numberline {1.1}About {\sc Fortran90{ }}in {\sc REGCM\_4.3{ }}}{ii}{}%
+\contentsline {section}{\numberline {1.2}Object-oriented programming in {\sc Fortran90{ }}}{iv}{}%
+\contentsline {chapter}{\numberline {2}The {\sc REGCM\_4.3{ }}programming style}{v}{}%
+\contentsline {section}{\numberline {2.1}Programming Language}{v}{}%
+\contentsline {subsection}{\numberline {2.1.1} Banned {\sc Fortran77{ }}language features:}{vi}{}%
+\contentsline {section}{\numberline {2.2}Target Computers}{vi}{}%
+\contentsline {section}{\numberline {2.3}Module Template}{vii}{}%
+\contentsline {section}{\numberline {2.4}FORTRAN Parameters}{ix}{}%
+\contentsline {section}{\numberline {2.5}Arithmetic Precision}{ix}{}%
+\contentsline {section}{\numberline {2.6}Other Issues}{ix}{}%
+\contentsline {subsection}{\numberline {2.6.1}{\sc Fortran90{ }}/{\sc Fortran77{ }}\ (in)compatibility}{ix}{}%
+\contentsline {chapter}{\numberline {3} Useful (?) Tips }{x}{}%
+\contentsline {section}{\numberline {3.1}How to debug the code }{x}{}%
+\contentsline {chapter}{References}{xi}{}%

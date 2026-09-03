@@ -1,0 +1,356 @@
+\begin{thebibliography}{64}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{Alfaro and Gomes}(2001)}]{Alfaro_01}
+Alfaro, S.~C., and L.~Gomes, Modeling mineral aerosol production by wind
+  erosion: Emission intensities and aerosol size distributions in source areas,
+  \textit{Journal of Geophysical Research}, \textit{106}, d16, 2001.
+
+\bibitem[{\textit{Anthes}(1977)}]{Anthes_77}
+Anthes, R.~A., A cumulus parameterization scheme utilizing a one-dimensional
+  cloud model, \textit{Mon. Wea. Rev.}, \textit{105}, 270--286, 1977.
+
+\bibitem[{\textit{Beheng}(1994)}]{Beheng_94}
+Beheng, K.~D., A parameterization of warm cloud microphysical conversion
+  processes, \textit{Atmos. Res.}, \textit{33}, 193--206, 1994.
+
+\bibitem[{\textit{Bretherton et~al.}(2004)\textit{Bretherton, McCaa, and
+  Grenier}}]{Bretherton_04}
+Bretherton, C.~S., J.~McCaa, and H.~Grenier, A new parameterization for shallow
+  cumulus convection and its application to marine subtropical cloud-topped
+  boundary layers. part i: Description and 1d results, \textit{Monthly Weather
+  Review}, \textit{132}, 864--882, 2004.
+
+\bibitem[{\textit{Briegleb}(1992)}]{Briegleb_92}
+Briegleb, B.~P., Delta-eddington approximation for solar radiation in the ncar
+  community climate model, \textit{J. Geophys. Res.}, \textit{97}, 7603--7612,
+  1992.
+
+\bibitem[{\textit{Collins et~al.}(2006)}]{Collins_06}
+Collins, W.~D., et~al., The {C}ommunity {C}limate {S}ystem {M}odel version 3
+  ({CCSM}3), \textit{Journal of Climate}, \textit{19}, 2122--2143, 2006.
+
+\bibitem[{\textit{Daley}(1979)}]{Daley}
+Daley, R., The application of non?linear normal mode initialization to an
+  operational forecast model, \textit{Atmosphere-Ocean}, \textit{17}(2),
+  97--124, \doi{10.1080/07055900.1979.9649054}, 1979.
+
+\bibitem[{\textit{Deardoff}(1978)}]{Deardoff_78}
+Deardoff, J.~W., Efficient prediction of ground surface temperature and
+  moisture with inclusion of a layer of vegetation, \textit{J. Geophys. Res.},
+  \textit{83}, 1889--1903, 1978.
+
+\bibitem[{\textit{Dickinson}(1984)}]{Dickinson_84}
+Dickinson, R.~E., \textit{Climate Processes and Climate Sensitivity}, chap.
+  Modeling evapotranspiration processes for three-dimensional global climate
+  models, pp. 52--72, American Geophysical Union, 1984.
+
+\bibitem[{\textit{Dickinson et~al.}(1986)\textit{Dickinson, Kennedy,
+  Henderson-Sellers, and Wilson}}]{Dickinson_86}
+Dickinson, R.~E., P.~J. Kennedy, A.~Henderson-Sellers, and M.~Wilson,
+  Biosphere-atmosphere transfer scheme (bats) for the ncar community climate
+  model, \textit{Tech. Rep. NCARE/TN-275+STR}, National Center for Atmospheric
+  Research, 1986.
+
+\bibitem[{\textit{Dickinson et~al.}(1989)\textit{Dickinson, Errico, Giorgi, and
+  Bates}}]{Dickinson_89}
+Dickinson, R.~E., R.~M. Errico, F.~Giorgi, and G.~T. Bates, A regional climate
+  model for the western {U}nited {S}tates, \textit{Climatic Change},
+  \textit{15}, 383--422, 1989.
+
+\bibitem[{\textit{Dickinson et~al.}(1993)\textit{Dickinson, Henderson-Sellers,
+  and Kennedy}}]{Dickinson_93}
+Dickinson, R.~E., A.~Henderson-Sellers, and P.~J. Kennedy, Biosphere-atmosphere
+  transfer scheme (bats) version 1e as coupled to the ncar community climate
+  model, \textit{Tech. rep.}, National Center for Atmospheric Research, 1993.
+
+\bibitem[{\textit{Emanuel}(1991)}]{Emanuel_91}
+Emanuel, K.~A., A scheme for representing cumulus convection in large-scale
+  models, \textit{J. Atmos. Sci.}, \textit{48}(21), 2313--2335, 1991.
+
+\bibitem[{\textit{Emanuel and Zivkovic-Rothman}(1999)}]{Emanuel_99}
+Emanuel, K.~A., and M.~Zivkovic-Rothman, Development and evaluation of a
+  convection scheme for use in climate models, \textit{J. Atmos. Sci.},
+  \textit{56}, 1766--1782, 1999.
+
+\bibitem[{\textit{Errico and Bates}(1988)}]{Errico_88}
+Errico, R.~M., and G.~T. Bates, Implicit normal-mode initialization of the
+  {PSU}/{NCAR} {M}esoscale {M}odel, \textit{Tech. Rep. TN-312+IA}, NCAR,
+  Boulder, Colorado, pp. 112, 1988.
+
+\bibitem[{\textit{Fairall et~al.}(1996)\textit{Fairall, Bradley, Godfrey, Wick,
+  Edson, and Young}}]{Fairall_96}
+Fairall, C., E.~Bradley, J.~Godfrey, G.~Wick, J.~Edson, and G.~Young, Cool-skin
+  and warm layer effects on sea surface temperature, \textit{Journal of
+  Geophysical Research}, \textit{101}, 1295--1308, 1996.
+
+\bibitem[{\textit{Fritsch and Chappell}(1980)}]{Fritsch_80}
+Fritsch, J.~M., and C.~F. Chappell, Numerical prediction of convectively driven
+  mesoscale pressure systems. part i: Convective parameterization, \textit{J.
+  Atmos. Sci.}, \textit{37}, 1722--1733, 1980.
+
+\bibitem[{\textit{Galperin et~al.}(1988)\textit{Galperin, Kantha, Hassid, and
+  Rosati}}]{Galperin_88}
+Galperin, B., L.~H. Kantha, S.~Hassid, and A.~Rosati, A quasi-equilibrium
+  turbulent energy model for geophysical flows, \textit{Journal of the
+  Atmospheric Sciences}, \textit{45}(1), 55--62, 1988.
+
+\bibitem[{\textit{Giorgi}(1989)}]{Giorgi_89}
+Giorgi, F., Two-dimensional simulations of possible mesoscale effects of
+  nuclear war fires, \textit{J. Geophys. Res.}, \textit{94}, 1127--1144, 1989.
+
+\bibitem[{\textit{Giorgi}(1990)}]{Giorgi_90}
+Giorgi, F., Simulation of regional climate using a limited area model nested in
+  a general circulation model, \textit{J. Climate}, \textit{3}, 941--963, 1990.
+
+\bibitem[{\textit{Giorgi}(2014)}]{Giorgi_14}
+Giorgi, F., Introduction to the special issue: the phase i cordex regcm4
+  hyper-matrix (crema) experiment, \textit{Climatic Change}, \textit{125}(1),
+  1--5, \doi{10.1007/s10584-014-1166-4}, 2014.
+
+\bibitem[{\textit{Giorgi and Bates}(1989)}]{Giorgi_89b}
+Giorgi, F., and G.~T. Bates, The climatological skill of a regional model over
+  complex terrain, \textit{Mon. Wea. Rev.}, \textit{117}, 2325--2347, 1989.
+
+\bibitem[{\textit{Giorgi and Marinucci}(1991)}]{Giorgi_91c}
+Giorgi, F., and M.~R. Marinucci, Validation of a regional atmospheric model
+  over europe: Sensitivity of wintertime and summertime simulations to selected
+  physics parameterizations and lower boundary conditions, \textit{Quart. J.
+  Roy. Meteor. Soc.}, \textit{117}, 1171--1206, 1991.
+
+\bibitem[{\textit{Giorgi and Mearns}(1999)}]{Giorgi_99}
+Giorgi, F., and L.~O. Mearns, Introduction to special section: Regional climate
+  modeling revisited, \textit{J. Geophys. Res.}, \textit{104}, 6335--6352,
+  1999.
+
+\bibitem[{\textit{Giorgi et~al.}(1993{\natexlab{a}})\textit{Giorgi, Bates, and
+  Nieman}}]{Giorgi_93}
+Giorgi, F., G.~T. Bates, and S.~J. Nieman, The multi-year surface climatology
+  of a regional atmospheric model over the western united states, \textit{J.
+  Climate}, \textit{6}, 75--95, 1993{\natexlab{a}}.
+
+\bibitem[{\textit{Giorgi et~al.}(1993{\natexlab{b}})\textit{Giorgi, Marinucci,
+  and Bates}}]{Giorgi_93b}
+Giorgi, F., M.~R. Marinucci, and G.~T. Bates, Development of a second
+  generation regional climate model (regcm2) i: Boundary layer and radiative
+  transfer processes, \textit{Mon. Wea. Rev.}, \textit{121}, 2794--2813,
+  1993{\natexlab{b}}.
+
+\bibitem[{\textit{Giorgi et~al.}(1993{\natexlab{c}})\textit{Giorgi, Marinucci,
+  Bates, and DeCanio}}]{Giorgi_93c}
+Giorgi, F., M.~R. Marinucci, G.~T. Bates, and G.~DeCanio, Development of a
+  second generation regional climate model (regcm2) ii: Convective processes
+  and assimilation of lateral boundary conditions, \textit{Mon. Wea. Rev.},
+  \textit{121}, 2814--2832, 1993{\natexlab{c}}.
+
+\bibitem[{\textit{Giorgi et~al.}(2002)\textit{Giorgi, Bi, and
+  Qian}}]{Giorgi_02}
+Giorgi, F., X.~Q. Bi, and Y.~Qian, Radiative forcing and regional climatic
+  effects of anthropogenic aerosols over {E}ast {A}sia: A regional coupled
+  climate-chemistry/aerosols model study, \textit{J. Geophys. Res.},
+  \textit{107}, 2002.
+
+\bibitem[{\textit{Giorgi et~al.}(2003{\natexlab{a}})\textit{Giorgi, Bi, and
+  Qian}}]{Giorgi03b}
+Giorgi, F., X.~Q. Bi, and Y.~Qian, Indirect vs. direct effects of anthropogenic
+  sulfate on the climate of east asia as simulated with a regional coupled
+  climate-chemistry/aerosol model, \textit{Climatic Change}, \textit{58},
+  345--376, 2003{\natexlab{a}}.
+
+\bibitem[{\textit{Giorgi et~al.}(2003{\natexlab{b}})\textit{Giorgi, Francisco,
+  and Pal}}]{Giorgi_03}
+Giorgi, F., R.~Francisco, and J.~S. Pal, Effects of a subgrid-scale topography
+  and land use scheme on the simulation of surface climate and hydrology. part
+  1: Effects of temperature and water vapor disaggregation., \textit{Journal of
+  Hydrometeorology}, \textit{4}, 317--333, 2003{\natexlab{b}}.
+
+\bibitem[{\textit{Giorgi et~al.}(2006)\textit{Giorgi, Pal, Bi, Sloan, Elguindi,
+  and Solmon}}]{Giorgi_06}
+Giorgi, F., J.~S. Pal, X.~Bi, L.~Sloan, N.~Elguindi, and F.~Solmon,
+  Introduction to the tac special issue: The regcnet network.,
+  \textit{Theoretical and Applied Climatology}, \textit{86}, 1--4, 2006.
+
+\bibitem[{\textit{Giorgi et~al.}(2012)}]{Giorgi_13}
+Giorgi, F., et~al., Regcm4: model description and preliminary tests over
+  multiple cordex domains, \textit{Climate Research}, \textit{52}, 7--29,
+  \doi{10.3354/cr01018}, 2012.
+
+\bibitem[{\textit{Grell}(1993)}]{Grell_93}
+Grell, G., Prognostic evaluation of assumptions used by cumulus
+  parameterizations, \textit{Mon. Wea. Rev.}, \textit{121}, 764--787, 1993.
+
+\bibitem[{\textit{Grell et~al.}(1994)\textit{Grell, Dudhia, and
+  Stauffer}}]{Grell_94}
+Grell, G.~A., J.~Dudhia, and D.~R. Stauffer, Description of the fifth
+  generation {P}enn {S}tate/{NCAR} {M}esoscale {M}odel ({MM}5), \textit{Tech.
+  Rep. TN-398+STR}, NCAR, Boulder, Colorado, pp. 121, 1994.
+
+\bibitem[{\textit{Grenier and Bretherton}(2001)}]{Grenier_01}
+Grenier, H., and C.~S. Bretherton, A moist pbl parameterization for large-scale
+  models and its application to subtropical cloud-topped marine boundary
+  layers, \textit{Monthly Weather Review}, \textit{129}, 357--377, 2001.
+
+\bibitem[{\textit{G{\"u}ttler et~al.}(2014)\textit{G{\"u}ttler,
+  Brankovi{\'{c}}, O'Brien, Coppola, Grisogono, and Giorgi}}]{Guettler_13}
+G{\"u}ttler, I., {\v{C}}.~Brankovi{\'{c}}, T.~A. O'Brien, E.~Coppola,
+  B.~Grisogono, and F.~Giorgi, Sensitivity of the regional climate model
+  regcm4.2 to planetary boundary layer parameterisation, \textit{Climate
+  Dynamics}, \textit{43}(7), 1753--1772, \doi{10.1007/s00382-013-2003-6}, 2014.
+
+\bibitem[{\textit{Hack et~al.}(1993)\textit{Hack, Boville, Briegleb, Kiehl,
+  Rasch, and Williamson}}]{Hack_93}
+Hack, J.~J., B.~A. Boville, B.~P. Briegleb, J.~T. Kiehl, P.~J. Rasch, and D.~L.
+  Williamson, Description of the ncar community climate model (ccm2),
+  \textit{Tech. Rep. NCAR/TN-382+STR}, National Center for Atmospheric
+  Research, 1993.
+
+\bibitem[{\textit{Henderson-Sellers}(1986)}]{Henderson-Sellers_86}
+Henderson-Sellers, B., Calculating the surface energy balance for lake and
+  reservoir modeling: A review, \textit{Rev. Geophys.}, \textit{24}(3),
+  625--649, 1986.
+
+\bibitem[{\textit{Holtslag and Boville}(1993)}]{Holtslag_93}
+Holtslag, A. A.~M., and B.~A. Boville, Local versus nonlocal boundary-layer
+  diffusion in a global climate model, \textit{J. Climate}, \textit{6}, 1993.
+
+\bibitem[{\textit{Holtslag et~al.}(1990)\textit{Holtslag, de~Bruijn, and
+  Pan}}]{Holtslag_90}
+Holtslag, A. A.~M., E.~I.~F. de~Bruijn, and H.-L. Pan, A high resolution air
+  mass transformation model for short-range weather forecasting, \textit{Mon.
+  Wea. Rev.}, \textit{118}, 1561--1575, 1990.
+
+\bibitem[{\textit{Hostetler et~al.}(1993)\textit{Hostetler, Bates, and
+  Giorgi}}]{Hostetler_93}
+Hostetler, S.~W., G.~T. Bates, and F.~Giorgi, Interactive nesting of a lake
+  thermal model within a regional climate model for climate change studies,
+  \textit{Geophysical Research}, \textit{98}, 5045--5057, 1993.
+
+\bibitem[{\textit{Hsie et~al.}(1984)\textit{Hsie, Anthes, and
+  Keyser}}]{Hsie_84}
+Hsie, E.~Y., R.~A. Anthes, and D.~Keyser, Numerical simulation of frontogenisis
+  in a moist atmosphere, \textit{J. Atmos. Sci.}, \textit{41}, 2581--2594,
+  1984.
+
+\bibitem[{\textit{Kiehl et~al.}(1996)\textit{Kiehl, Hack, Bonan, Boville,
+  Breigleb, Williamson, and Rasch}}]{Kiehl_96}
+Kiehl, J.~T., J.~J. Hack, G.~B. Bonan, B.~A. Boville, B.~P. Breigleb,
+  D.~Williamson, and P.~Rasch, Description of the ncar community climate model
+  (ccm3), \textit{Tech. Rep. NCAR/TN-420+STR}, National Center for Atmospheric
+  Research, 1996.
+
+\bibitem[{\textit{Klemp and Wilhelmson}(1978)}]{Klemp_1978}
+Klemp, J., and R.~Wilhelmson, Simulations of three-dimensional convective storm
+  dynamics, \textit{J. Atmos. Sci.}, \textit{35}, 1070--1096, 1978.
+
+\bibitem[{\textit{Kueppers et~al.}(2008)}]{Kueppers_08}
+Kueppers, L., et~al., Seasonal temperature response to land-use change in the
+  western united states., \textit{Global and Planetary Change}, \textit{60},
+  2008.
+
+\bibitem[{\textit{Laurent et~al.}(2008)\textit{Laurent, Marticorena,
+  Bergametti, Leon, and Mahowald}}]{Marticorena_05}
+Laurent, B., B.~Marticorena, G.~Bergametti, J.~Leon, and N.~Mahowald, Modeling
+  mineral dust emissions from the sahara desert using new surface properties
+  and soil database, \textit{Journal of Geophysical Research}, \textit{113},
+  d14218, 2008.
+
+\bibitem[{\textit{Lawrence and Chase}(2007)}]{Lawrence_07}
+Lawrence, P., and T.~Chase, Representing a new {MODIS} consistent land surface
+  in the {C}ommunity {L}and {M}odel ({CLM}3.0), \textit{J. Geophys. Res.},
+  \textit{112}, g01023, 2007.
+
+\bibitem[{\textit{Nogherotto and Tompkins}(2014)}]{nogherotto:14}
+Nogherotto, R., and A.~M. Tompkins, {The new cloud microphysics implemented in
+  the Regional Climate Model RegCM4}, \textit{in preparation}, p.~{}, 2014.
+
+\bibitem[{\textit{O'Brien et~al.}(2012)\textit{O'Brien, Chuang, Sloan, Faloona,
+  and Rossiter}}]{OBrien_12a}
+O'Brien, T.~A., P.~Y. Chuang, L.~C. Sloan, I.~C. Faloona, and D.~L. Rossiter,
+  Coupling a new turbulence parametrization to regcm adds realistic
+  stratocumulus clouds, \textit{Geoscientific Model Development},
+  \textit{5}(4), 989--1008, \doi{10.5194/gmd-5-989-2012}, 2012.
+
+\bibitem[{\textit{Oleson}(2004)}]{Oleson_04}
+Oleson, K. e.~a., Technical description of the {C}ommunity {L}and {M}odel
+  ({CLM}), \textit{Tech. Rep. Technical Note NCAR/TN-461+STR}, NCAR, 2004.
+
+\bibitem[{\textit{Oleson et~al.}(2008)}]{Oleson_08}
+Oleson, K.~W., et~al., Improvements to the {C}ommunity {L}and {M}odel and their
+  impact on the hydrological cycle, \textit{Journal of Geophysical
+  Research-Biogeosciences}, \textit{113}(G1), 2008.
+
+\bibitem[{\textit{O’Brien et~al.}(2012)\textit{O’Brien, Sloan, Chuang,
+  Faloona, and Johnstone}}]{OBrien_12b}
+O’Brien, T.~A., L.~C. Sloan, P.~Y. Chuang, I.~C. Faloona, and J.~A.
+  Johnstone, Multidecadal simulation of coastal fog with a regional climate
+  model, \textit{Climate Dynamics}, pp. 1--12, \doi{10.1007/s00382-012-1486-x},
+  2012.
+
+\bibitem[{\textit{Pal et~al.}(2000)\textit{Pal, Small, and Eltahir}}]{Pal_00}
+Pal, J.~S., E.~E. Small, and E.~A.~B. Eltahir, Simulation of regional-scale
+  water and energy budgets: Representation of subgrid cloud and precipitation
+  processes within {R}eg{CM}, \textit{J. Geophys. Res.-Atmospheres},
+  \textit{105}(D24), 29,579--29,594, 2000.
+
+\bibitem[{\textit{Pal et~al.}(2007)\textit{Pal, Giorgi, Bi et~al.}}]{Pal_07}
+Pal, J.~S., F.~Giorgi, X.~Bi, et~al., The {ICTP} {RegCM3} and {RegCNET}:
+  Regional climate modeling for the developing world, \textit{Bull. Amer.
+  Meteor. Soc.}, \textit{88}, 1395--1409, 2007.
+
+\bibitem[{\textit{Patterson and Hamblin}(1988)}]{Patterson_88}
+Patterson, J.~C., and P.~F. Hamblin, Thermal simulation of a lake with winter
+  ice cover, \textit{Limn. Oceanography}, \textit{33}, 323--338, 1988.
+
+\bibitem[{\textit{Slingo}(1989)}]{Slingo_89}
+Slingo, J.~M., A gcm parameterization for the shortwave radiative properties of
+  water clouds, \textit{J. Atmos. Sci.}, \textit{46}, 1419--1427, 1989.
+
+\bibitem[{\textit{Small and Sloan}(1999)}]{Small_99b}
+Small, E.~E., and L.~C. Sloan, Simulating the water balance of the aral sea
+  with a coupled regional climate-lake model, \textit{J. Geophys. Res.},
+  \textit{104}, 6583--6602, 1999.
+
+\bibitem[{\textit{Solmon et~al.}(2008)\textit{Solmon, Mallet, Elguindi, Giorgi,
+  Zakey, , and Konare}}]{Solmon_08}
+Solmon, F., M.~Mallet, N.~Elguindi, F.~Giorgi, A.~Zakey, , and A.~Konare, Dust
+  aerosol impact on regional precipitation over western africa, mechanisms and
+  sensitivity to absorption properties, \textit{Geophysical Research Letters},
+  \textit{35}, l24705, 2008.
+
+\bibitem[{\textit{Steiner et~al.}(2009)\textit{Steiner, Pal, Rauscher, Bell,
+  Diffenbaugh, Boone, Sloan, and Giorgi}}]{Steiner_09}
+Steiner, A.~L., J.~S. Pal, S.~A. Rauscher, J.~L. Bell, N.~S. Diffenbaugh,
+  A.~Boone, L.~C. Sloan, and F.~Giorgi, Land surface coupling in regional
+  climate simulations of the {W}est {A}frican monsoon, \textit{Climate
+  Dynamics}, \textit{33}(6), 869--892, 2009.
+
+\bibitem[{\textit{Sundqvist et~al.}(1989)\textit{Sundqvist, Berge, and
+  Kristjansson}}]{Sundqvist_89}
+Sundqvist, H., E.~Berge, and J.~E. Kristjansson, The effects of domain choice
+  on summer precipitation simulation and sensitivity in a regional climate
+  model, \textit{J. Climate}, \textit{11}, 2698--2712, 1989.
+
+\bibitem[{\textit{Tiedtke}(1993)}]{tiedtke:93}
+Tiedtke, M., {Representation of clouds in large-scale models}, \textit{Mon.
+  Wea. Rev.}, \textit{{121}}, {3040--3061}, 1993.
+
+\bibitem[{\textit{Tompkins}(2007)}]{tompkins:07}
+Tompkins, A.~M., {Ice supersaturation in the ECMWF integrated forecast system},
+  \textit{Q. J. R. Meteorol. Soc.}, \textit{{133}}, {53--63}, 2007.
+
+\bibitem[{\textit{Zeng}(2005)}]{Zeng_05}
+Zeng, X., A prognostic scheme of sea surface skin temperature for modeling and
+  data assimilation, \textit{Geophysical Research Letters}, \textit{32},
+  l14605, 2005.
+
+\bibitem[{\textit{Zeng et~al.}(1998)\textit{Zeng, Zhao, and
+  Dickinson}}]{Zeng_98}
+Zeng, X., M.~Zhao, and R.~E. Dickinson, Intercomparison of bulk aerodynamic
+  algoriths for the computation of sea surface fluxes using toga coare and tao
+  data, \textit{J. Climate}, \textit{11}, 2628--2644, 1998.
+
+\end{thebibliography}

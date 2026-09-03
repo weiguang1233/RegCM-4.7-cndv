@@ -1,0 +1,29 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{Giorgi}(2011)}]{refman_11}
+Giorgi, F., Regcm version 4.1 reference manual, \textit{Tech. rep.}, ICTP
+  Trieste, 2011.
+
+\bibitem[{\textit{{O'Brien} et~al.}(2011)\textit{{O'Brien}, {Sloan}, and
+  {Snyder}}}]{tao_ense}
+{O'Brien}, T.~A., L.~C. {Sloan}, and M.~A. {Snyder}, {Can ensembles of regional
+  climate model simulations improve results from sensitivity studies?},
+  \textit{Climate Dynamics}, \textit{37}, 1111--1118,
+  \doi{10.1007/s00382-010-0900-5}, 2011.
+
+\bibitem[{\textit{R.~Courant and Lewy}(1928)}]{CFL}
+R.~Courant, K.~F., and H.~Lewy, \"uber die partiellen differenzengleichungen
+  der mathematischen physik, \textit{Mathematische Annalen}, \textit{100}(1),
+  32–74, 1928.
+
+\bibitem[{\textit{Rew and Davis}(1990)}]{Rew_90}
+Rew, R.~K., and G.~P. Davis, Netcdf: An interface for scientific data access,
+  \textit{IEEE Computer Graphics and Applications}, \textit{10}(4), 76--82,
+  1990.
+
+\end{thebibliography}

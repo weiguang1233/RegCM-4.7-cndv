@@ -1,0 +1,6 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Schematic representation of the vertical structure of the model. This example is for 16 vertical layers. Dashed lines denote half-sigma levels, solid lines denote full-sigma levels. (Adapted from the PSU/NCAR Mesoscale Modeling System Tutorial Class Notes and User's Guide.)}}{12}{}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Schematic representation showing the horizontal Arakawa B-grid staggering of the dot and cross grid points.}}{14}{}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \small Schematics of the new scheme, showing the 5 prognostic variables and how they are related to each other through microphysical processes}}{35}{}%

@@ -1,0 +1,29 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{C.~D.~Norton}(1996)}]{oof90_web}
+C.~D.~Norton, B. K.~S., V. K.~Decyk, High performance object-oriented
+  programming in fortran 90, Internet Web Pages,
+  http://www.cs.rpi.edu/~szymansk/oof90.html, 1996.
+
+\bibitem[{\textit{Kerrigan}(1993)}]{Kerrigan}
+Kerrigan, J.~F., \textit{Migrating to Fortran 90}, 1st ed., O'Reilly,
+  Sebastopol, CA, 1993.
+
+\bibitem[{\textit{M.~Metcalf}(1990)}]{Metcalf}
+M.~Metcalf, J.~R., \textit{Fortran 90 explained}, 1st ed., Oxford University
+  Press, Oxford, UK, 1990.
+
+\bibitem[{\textit{Stroustrup}(1991)}]{Stroustrup}
+Stroustrup, B., \textit{The C++ programming language}, 2 ed., Addison-Wesley,
+  Reading, MA, 1991.
+
+\bibitem[{\textit{W.~S.~Brainerd}(1990)}]{Brainerd}
+W.~S.~Brainerd, J.~C.~A., C.~H.~Goldberg, \textit{Programmer's guide to Fortran
+  90}, 1st ed., McGraw-Hill, New York, NY, 1990.
+
+\end{thebibliography}

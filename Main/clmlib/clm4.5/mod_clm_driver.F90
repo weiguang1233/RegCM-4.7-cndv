@@ -671,7 +671,8 @@ module mod_clm_driver
         write(stdout,*) 'End of year. CNDV called now: ncdate=', &
                        ncdate,' nbdate=',nbdate,' kyr=',kyr
       end if
-      call dv(begg,endg,begp,endp,filter%num_natvegp,filter%natvegp,kyr)
+      call dv(begg,endg,begc,endc,begp,endp, &
+              filter%num_natvegp,filter%natvegp,kyr)
     end if
 #endif
 

@@ -28,7 +28,8 @@ module mod_clm_cndvestablishment
     use mod_clm_type
     use mod_clm_varpar   , only : numpft
     use mod_clm_varcon   , only : istsoil
-    use mod_clm_pftvarcon    , only : noveg, nc3_arctic_grass
+    use mod_clm_pftvarcon    , only : noveg, nc3_arctic_grass, &
+                                      nbrdlf_evr_trp_tree
     use mod_clm_varcon, only : secspday , rpi , tfrz
     implicit none
     integer(ik4) , intent(in) :: lbg, ubg         ! gridcell bounds
@@ -38,6 +39,7 @@ module mod_clm_cndvestablishment
     logical , pointer :: pftmayexist(:)
     integer(ik4) , pointer :: plandunit(:)  ! landunit of corresponding pft
     integer(ik4) , pointer :: pgridcell(:)  ! gridcell of corresponding pft
+    integer(ik4) , pointer :: pcolumn(:)    ! column of corresponding pft
     integer(ik4) , pointer :: ltype(:) ! landunit type for corresponding pft
     real(rk8), pointer :: tmomin20(:)  ! 20-yr running mean of tmomin
     real(rk8), pointer :: agdd20(:)    ! 20-yr running mean of agdd
@@ -83,8 +85,10 @@ module mod_clm_cndvestablishment
     ! lpj's growth efficiency
     real(rk8), pointer :: greffic(:)
     real(rk8), pointer :: heatstress(:)
+    ! 20-year running mean of annual drought duration (days)
+    real(rk8), pointer :: drought_days20(:)
 
-    integer(ik4)  :: g,l,p,m   ! indices
+    integer(ik4)  :: g,l,c,p,m   ! indices
     ! local gridcell filter for error check
     integer(ik4)  :: fn, filterg(ubg-lbg+1)
     !
@@ -118,6 +122,7 @@ module mod_clm_cndvestablishment
     real(rk8):: bm_delta
 
     real(rk8), parameter :: ramp_agddtw = 300.0
+    real(rk8), parameter :: tropical_evergreen_drought_limit = 45._rk8
     !
     ! minimum individual density for persistence of PFT (indiv/m2)
     !
@@ -140,10 +145,15 @@ module mod_clm_cndvestablishment
 
     ltype => clm3%g%l%itype
 
+    ! Assign local pointers to derived type members (column-level)
+
+    drought_days20 => clm3%g%l%c%cps%drought_days20
+
     ! Assign local pointers to derived type members (pft-level)
 
     ivt           => clm3%g%l%c%p%itype
     pgridcell     => clm3%g%l%c%p%gridcell
+    pcolumn       => clm3%g%l%c%p%column
     plandunit     => clm3%g%l%c%p%landunit
     present       => clm3%g%l%c%p%pdgvs%present
     nind          => clm3%g%l%c%p%pdgvs%nind
@@ -225,6 +235,7 @@ module mod_clm_cndvestablishment
 
     do p = lbp, ubp
       g = pgridcell(p)
+      c = pcolumn(p)
       if (tmomin20(g) >= tcmin(ivt(p)) + tfrz ) then
         if ( tmomin20(g) <= tcmax(ivt(p)) + tfrz  .and. &
              agdd20(g) >= gddmin(ivt(p))) then
@@ -238,6 +249,14 @@ module mod_clm_cndvestablishment
           estab(p) = .false.
           pftmayexist(p) = .true.
         end if
+      end if
+
+      ! ModifiedDV: tropical broadleaf evergreen trees cannot survive or
+      ! establish where the long-term mean drought duration exceeds 45 days.
+      if (ivt(p) == nbrdlf_evr_trp_tree .and. &
+          drought_days20(c) > tropical_evergreen_drought_limit) then
+        survive(p) = .false.
+        estab(p) = .false.
       end if
     end do
 
@@ -269,7 +288,7 @@ module mod_clm_cndvestablishment
             ! sounds circular; also seed fpcgrid depends on sla,
             ! so theoretically need diff value for each pft;slevis
             fpcgrid(p) = 0.000844_rk8
-            if ( iswood(p) ) fpcgrid(p) = 0.05_rk8
+            if ( .not. iswood(p) ) fpcgrid(p) = 0.05_rk8
 
             ! Seed carbon for newly established pfts
             ! Equiv. to pleaf=1 & pstor=1 set in subr pftwt_cnbal (slevis)

@@ -1466,6 +1466,16 @@ module mod_clm_histflds
          ptr_col=clm3%g%l%c%cps%soilpsi)
 #endif
 
+#if (defined CNDV)
+    call hist_addfld1d (fname='DROUGHT_DAYS', units='days', &
+         avgflag='I', long_name='current-year drought duration', &
+         ptr_col=clm3%g%l%c%cps%drought_days, default='inactive')
+
+    call hist_addfld1d (fname='DROUGHT_DAYS20', units='days', &
+         avgflag='I', long_name='20-year running mean drought duration', &
+         ptr_col=clm3%g%l%c%cps%drought_days20, default='inactive')
+#endif
+
 #if (defined CN)
     ! add history fields for all CN variables, always set as default='inactive'
 

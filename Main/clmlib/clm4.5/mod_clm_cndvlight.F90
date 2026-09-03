@@ -217,7 +217,10 @@ module mod_clm_cndvlight
       else if ( iswood(p) .and. tree(ivt(p)) < 1 ) then
         ! shrub
         if ( fpc_shrub_total(g) > fpc_shrub_max(g) ) then
-          excess = 1.0_rk8 - fpc_shrub_max(g) / fpc_shrub_total(g)
+          ! Apportion the gridcell-level excess among shrub PFTs. "excess"
+          ! must have FPC units because it is subtracted from fpcgrid below.
+          excess = (fpc_shrub_total(g) - fpc_shrub_max(g)) * &
+                   fpcgrid(p) / fpc_shrub_total(g)
           ! Reduce individual density (and thereby gridcell-level biomass)
           ! so that total shrub FPC reduced to fpc_shrub_max(g)
           if ( fpcgrid(p) > 0.0_rk8 ) then

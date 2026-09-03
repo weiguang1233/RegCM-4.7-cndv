@@ -1,0 +1,60 @@
+# Autotools generated files
+/Makefile
+/Makefile.in
+/aclocal.m4
+/autom4te.cache/
+/config.h
+/config.h.in
+/config.log
+/config.status
+/configure
+/compile
+/config.guess
+/config.sub
+/depcomp
+/install-sh
+/libtool
+/ltmain.sh
+/missing
+/stamp-h1
+/version
+
+# Generated makefiles throughout the source tree
+**/Makefile
+**/Makefile.in
+
+# Fortran/C build products
+*.o
+*.lo
+*.la
+*.mod
+*.a
+*.so
+*.so.*
+.deps/
+.libs/
+
+# Local installation and test output
+/install-cndv/
+/Testing/*.log
+/Testing/*.out
+
+# In-tree programs produced by this release's build system
+/Main/regcm
+/PostProc/GrADSNcPlot
+/PostProc/GrADSNcPrepare
+/PostProc/clm45_1dto2d
+/PostProc/sigma2p
+/PostProc/sigma2z
+/PreProc/Terrain/terrain
+/PreProc/ICBC/chem_icbc
+/PreProc/ICBC/icbc
+/PreProc/ICBC/sst
+/PreProc/CLM45/interpinic
+/PreProc/CLM45/mksurfdata
+/PreProc/CH_EMISSIONS/interpolation/tools/REGCM_grid/emcre_grid
+
+# Editor and platform metadata
+*~
+.DS_Store
+._*

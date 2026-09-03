@@ -2507,6 +2507,10 @@ module mod_clm_typeinit
 !   allocate(cps%xirrig(ibeg:iend))
     allocate(cps%max_dayl(ibeg:iend))
     allocate(cps%soilpsi(ibeg:iend,nlevgrnd))
+#if (defined CNDV)
+    allocate(cps%drought_days(ibeg:iend))
+    allocate(cps%drought_days20(ibeg:iend))
+#endif
     allocate(cps%decl(ibeg:iend))
     allocate(cps%coszen(ibeg:iend))
     allocate(cps%bd(ibeg:iend,nlevgrnd))
@@ -2706,6 +2710,10 @@ module mod_clm_typeinit
     cps%wf(ibeg:iend) = nan
 !   cps%xirrig(ibeg:iend) = 0._rk8
     cps%soilpsi(ibeg:iend,1:nlevgrnd) = spval
+#if (defined CNDV)
+    cps%drought_days(ibeg:iend) = 0._rk8
+    cps%drought_days20(ibeg:iend) = -1._rk8
+#endif
     cps%decl(ibeg:iend) = nan
     cps%coszen(ibeg:iend) = nan
     cps%bd(ibeg:iend,1:nlevgrnd) = spval

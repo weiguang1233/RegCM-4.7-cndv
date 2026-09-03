@@ -42,6 +42,9 @@ module mod_clm_hydrology2
             isturb, spval, icol_roof, icol_road_imperv, icol_road_perv,  &
             icol_sunwall, icol_shadewall, istdlak, tfrz, hfus, grav
     use mod_clm_varcon , only : istcrop
+#if (defined CNDV)
+    use mod_clm_varcon , only : secspday
+#endif
     use mod_clm_varpar , only : nlevgrnd, nlevsno, nlevsoi, nlevurb
     use mod_clm_snowhydrology , only : SnowCompaction, CombineSnowLayers, &
             DivideSnowLayers, SnowWater, BuildSnowFilter
@@ -157,6 +160,10 @@ module mod_clm_hydrology2
     real(rk8), pointer :: qflx_snwcp_ice(:)
     ! soil water potential in each soil layer (MPa)
     real(rk8), pointer :: soilpsi(:,:)
+#if (defined CNDV)
+    ! accumulated drought duration in the current year (days)
+    real(rk8), pointer :: drought_days(:)
+#endif
 
     real(rk8), pointer :: snot_top(:)  ! snow temperature in top layer (col) [K]
     ! temperature gradient in top layer (col) [K m-1]
@@ -225,6 +232,11 @@ module mod_clm_hydrology2
     logical , pointer :: do_capsnow(:)
 
     integer(ik4)  :: g,l,c,j,fc    ! indices
+#if (defined CNDV)
+    integer(ik4), parameter :: num_drought_layers = 3_ik4
+    integer(ik4) :: first_soil_layer, last_drought_layer
+    real(rk8), parameter :: drought_psi_threshold = -2._rk8 ! MPa
+#endif
     ! partial volume of liquid water in layer
     real(rk8) :: vol_liq(lbc:ubc,1:nlevgrnd)
     ! change in soil water
@@ -313,6 +325,9 @@ module mod_clm_hydrology2
     endwb             => clm3%g%l%c%cwbal%endwb
     begwb             => clm3%g%l%c%cwbal%begwb
     soilpsi           => clm3%g%l%c%cps%soilpsi
+#if (defined CNDV)
+    drought_days      => clm3%g%l%c%cps%drought_days
+#endif
     smp_l             => clm3%g%l%c%cws%smp_l
     hk_l              => clm3%g%l%c%cws%hk_l
     qflx_rsub_sat     => clm3%g%l%c%cwf%qflx_rsub_sat
@@ -614,6 +629,22 @@ module mod_clm_hydrology2
           soilpsi(c,j) = -15.0_rk8
         end if
       end do
+    end do
+#endif
+
+#if (defined CNDV)
+    ! ModifiedDV drought criterion: a day fraction is dry only when even the
+    ! wettest of the top three soil layers is below -2 MPa.
+    first_soil_layer = lbound(soilpsi, 2)
+    last_drought_layer = min(first_soil_layer + num_drought_layers - 1_ik4, &
+                             ubound(soilpsi, 2))
+    do fc = 1, num_hydrologyc
+      c = filter_hydrologyc(fc)
+      if (cactive(c) .and. ityplun(clandunit(c)) == istsoil .and. &
+          maxval(soilpsi(c,first_soil_layer:last_drought_layer)) < &
+          drought_psi_threshold) then
+        drought_days(c) = drought_days(c) + dtsrf/secspday
+      end if
     end do
 #endif
 

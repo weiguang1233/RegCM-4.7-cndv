@@ -182,6 +182,25 @@ if eval "test x"$USECLM45" = x1"; then
   AC_SUBST(AM_CPPFLAGS)
 fi
 
+USECNDV="0"
+AC_ARG_ENABLE(cndv,
+  AC_HELP_STRING([--enable-cndv],
+                 [Enable CLM4.5 carbon-nitrogen dynamic vegetation (requires --enable-clm45).]),
+  [AS_CASE([$enableval],
+    [yes], [USECNDV="1"],
+    [no],  [USECNDV="0"],
+    [AC_MSG_ERROR([invalid value '$enableval' for --enable-cndv])])],
+)
+
+if eval "test x"$USECNDV" = x1"; then
+  if eval "test x"$USECLM45" != x1"; then
+    AC_MSG_ERROR([--enable-cndv requires --enable-clm45])
+  fi
+  AC_MSG_WARN([Compiling CLM45 carbon-nitrogen dynamic vegetation code])
+  AM_CPPFLAGS="\$(DEFINE)CN \$(DEFINE)CNDV $AM_CPPFLAGS"
+  AC_SUBST(AM_CPPFLAGS)
+fi
+
 USECPL="0"
 AC_ARG_ENABLE(cpl,
   AC_HELP_STRING([--enable-cpl],

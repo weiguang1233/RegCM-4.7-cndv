@@ -743,6 +743,10 @@ module mod_clm_cnsetvalue
       cps%annsum_counter(i) = val
       cps%cannsum_npp(i) = val
       cps%cannavg_t2m(i) = val
+#if (defined CNDV)
+      cps%drought_days(i) = val
+      cps%drought_days20(i) = val
+#endif
 
       ! fire related variables changed by F. Li and S. Levis
       cps%wf(i) = val

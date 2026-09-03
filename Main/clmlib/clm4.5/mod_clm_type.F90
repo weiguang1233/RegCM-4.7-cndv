@@ -2157,6 +2157,12 @@ module mod_clm_type
     real(rk8) , pointer , dimension(:) :: coszen
     ! soil water potential in each soil layer (MPa)
     real(rk8) , pointer , dimension(:,:) :: soilpsi
+#if (defined CNDV)
+    ! accumulated drought duration in the current year (days)
+    real(rk8) , pointer , dimension(:) :: drought_days
+    ! 20-year recursive running mean of annual drought duration (days)
+    real(rk8) , pointer , dimension(:) :: drought_days20
+#endif
     ! bulk density of dry soil material [kg/m^3]
     real(rk8) , pointer , dimension(:,:) :: bd
     ! fraction of potential immobilization (no units)

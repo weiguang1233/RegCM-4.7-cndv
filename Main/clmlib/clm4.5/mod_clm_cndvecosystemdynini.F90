@@ -22,17 +22,19 @@ module mod_clm_cndvecosystemdynini
     use mod_clm_atmlnd , only : atm_domain
     implicit none
     type(atm_domain) , intent(in) :: adomain
-    integer(ik4) :: g , p
+    integer(ik4) :: g , c , p
     integer(ik4) :: begp , endp ! per-proc beginning and ending pft indices
     integer(ik4) :: begc , endc !              "                column indices
     integer(ik4) :: begl , endl !              "                landunit indices
     integer(ik4) :: begg , endg !              "                gridcell indices
     type(gridcell_type) , pointer :: gptr ! pointer to gridcell derived subtype
+    type(column_type) , pointer :: cptr   ! pointer to column derived subtype
     type(pft_type) , pointer :: pptr      ! pointer to pft derived subtype
 
     ! Set pointers into derived type
 
     gptr => clm3%g
+    cptr => clm3%g%l%c
     pptr => clm3%g%l%c%p
 
     ! ---------------------------------------------------------------
@@ -40,6 +42,12 @@ module mod_clm_cndvecosystemdynini
     ! ---------------------------------------------------------------
 
     call get_proc_bounds(begg, endg, begl, endl, begc, endc, begp, endp)
+
+    do c = begc , endc
+      cptr%cps%drought_days(c) = 0._rk8
+      ! Negative means that no complete annual sample has been seen yet.
+      cptr%cps%drought_days20(c) = -1._rk8
+    end do
 
     do p = begp , endp
       g = pptr%gridcell(p)

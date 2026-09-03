@@ -25,8 +25,9 @@ module mod_clm_cnphenology
 
   real(rk8) :: fracday    ! dtime as a fraction of day
   real(rk8) :: crit_dayl  ! critical daylength for offset (seconds)
-  real(rk8) :: ndays_on   ! number of days to complete onset
-  real(rk8) :: ndays_off  ! number of days to complete offset
+  real(rk8) :: ndays_on         ! number of days to complete onset
+  real(rk8) :: ndays_off        ! seasonal-deciduous offset duration
+  real(rk8) :: ndays_off_stress ! stress-deciduous offset duration
   real(rk8) :: fstor2tran ! fraction of storge to move to transfer on each onset
   real(rk8) :: crit_onset_fdd  ! critical number of freezing days
   real(rk8) :: crit_onset_swi  ! water stress days for offset trigger
@@ -149,6 +150,7 @@ module mod_clm_cnphenology
     crit_offset_fdd = 15.0_rk8
     crit_offset_swi = 15.0_rk8
     soilpsi_off     = -2.0_rk8
+    ndays_off_stress = 30._rk8
 
     ! -----------------------------------------
     ! Constants for CNLivewoodTurnover
@@ -805,11 +807,14 @@ module mod_clm_cnphenology
 
     ! seconds per quarter day
     real(rk8),parameter :: secspqtrday = secspday / 4.0_rk8
+    integer(ik4),parameter :: num_top_soil_layers = 3_ik4
     integer(ik4) :: c,p         ! indices
     integer(ik4) :: fp          ! lake filter pft index
+    integer(ik4) :: first_soil_layer, last_top_soil_layer
     real(rk8):: crit_onset_gdd  ! degree days for onset trigger
     real(rk8):: soilt           ! temperature of top soil layer
-    real(rk8):: psi             ! water stress of top soil layer
+    real(rk8):: psi_on          ! driest water potential in top soil layers
+    real(rk8):: psi_off         ! wettest water potential in top soil layers
     real(rk8):: lat             !latitude (radians)
     real(rk8):: temp            !temporary variable for daylength calculation
 
@@ -902,13 +907,18 @@ module mod_clm_cnphenology
 
     ! set time steps
 
+    first_soil_layer = lbound(soilpsi, 2)
+    last_top_soil_layer = min(first_soil_layer + num_top_soil_layers - 1_ik4, &
+                              ubound(soilpsi, 2))
+
     do fp = 1 , num_soilp
       p = filter_soilp(fp)
       c = pcolumn(p)
 
       if (stress_decid(ivt(p)) == 1._rk8) then
         soilt = t_soisno(c,3)
-        psi = soilpsi(c,3)
+        psi_on = minval(soilpsi(c,first_soil_layer:last_top_soil_layer))
+        psi_off = maxval(soilpsi(c,first_soil_layer:last_top_soil_layer))
 
         ! use solar declination information stored during Surface Albedo()
         ! and latitude from gps to calcluate daylength (convert latitude
@@ -1019,7 +1029,7 @@ module mod_clm_cnphenology
           end if
 
           ! if soils are wet, accumulate soil water index for onset trigger
-          if (psi >= soilpsi_on) onset_swi(p) = onset_swi(p) + fracday
+          if (psi_on >= soilpsi_on) onset_swi(p) = onset_swi(p) + fracday
 
           ! if critical soil water index is exceeded, set onset_flag, and
           ! then test for soil temperature criteria
@@ -1095,7 +1105,7 @@ module mod_clm_cnphenology
           ! if soil water potential lower than critical value, accumulate
           ! as stress in offset soil water index
 
-          if (psi <= soilpsi_off) then
+          if (psi_off <= soilpsi_off) then
             offset_swi(p) = offset_swi(p) + fracday
 
             ! if the offset soil water index exceeds critical value, and
@@ -1109,7 +1119,7 @@ module mod_clm_cnphenology
           ! offset water stress index.  By this mechanism, there must be a
           ! sustained period of water stress to initiate offset.
 
-          else if (psi >= soilpsi_on) then
+          else if (psi_off >= soilpsi_on) then
             offset_swi(p) = offset_swi(p) - fracday
             offset_swi(p) = max(offset_swi(p),0._rk8)
           end if
@@ -1140,7 +1150,7 @@ module mod_clm_cnphenology
           if (offset_flag(p) == 1._rk8) then
             offset_fdd(p) = 0._rk8
             offset_swi(p) = 0._rk8
-            offset_counter(p) = ndays_off * secspday
+            offset_counter(p) = ndays_off_stress * secspday
             prev_leafc_to_litter(p) = 0._rk8
             prev_frootc_to_litter(p) = 0._rk8
           end if

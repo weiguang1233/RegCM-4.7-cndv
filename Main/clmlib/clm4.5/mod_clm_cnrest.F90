@@ -3801,6 +3801,42 @@ module mod_clm_cnrest
     end if
 
 #if (defined CNDV)
+    ! Current-year accumulated ModifiedDV drought duration
+    if (flag == 'define') then
+      call clm_addvar(clmvar_double,ncid,'drought_days',['column'], &
+            long_name='current-year drought duration',units='days')
+    else if (flag == 'read') then
+      if (clm_check_var(ncid,'drought_days')) then
+        call clm_readvar(ncid,'drought_days', &
+                cptr%cps%drought_days,gcomm_column)
+      else
+        cptr%cps%drought_days(begc:endc) = 0._rk8
+        if (myid == italk) write(stdout,*) &
+          'drought_days absent from restart; starting annual accumulation at zero'
+      end if
+    else if (flag == 'write') then
+      call clm_writevar(ncid,'drought_days', &
+              cptr%cps%drought_days,gcomm_column)
+    end if
+
+    ! 20-year recursive running mean of ModifiedDV drought duration
+    if (flag == 'define') then
+      call clm_addvar(clmvar_double,ncid,'drought_days20',['column'], &
+            long_name='20-year running mean drought duration',units='days')
+    else if (flag == 'read') then
+      if (clm_check_var(ncid,'drought_days20')) then
+        call clm_readvar(ncid,'drought_days20', &
+                cptr%cps%drought_days20,gcomm_column)
+      else
+        cptr%cps%drought_days20(begc:endc) = -1._rk8
+        if (myid == italk) write(stdout,*) &
+          'drought_days20 absent from restart; initializing from next annual sample'
+      end if
+    else if (flag == 'write') then
+      call clm_writevar(ncid,'drought_days20', &
+              cptr%cps%drought_days20,gcomm_column)
+    end if
+
     ! pft type dgvm physical state - crownarea
     if (flag == 'define') then
       call clm_addvar(clmvar_double,ncid,'CROWNAREA',['pft'], &

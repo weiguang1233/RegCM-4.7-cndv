@@ -231,13 +231,16 @@ RefinedCN 和 ModifiedDV 的关键逻辑”，而不是“已经复现论文全�
 
 ## 7. 工程验证与边界
 
+### 7.1 本机 GNU 构建
+
 本机已完成：
 
 - `./bootstrap.sh`；
 - CNDV 依赖 CLM4.5 的负向配置测试；
 - 配置结果确认含 `-DCLM45 -DCN -DCNDV`；
 - GNU/OpenMPI/NetCDF 环境下从干净状态全量串行 `make`；
-- `make install`，生成 `install-cndv/bin/regcmMPICN`；
+- `make install`，本机 GNU Make 4.4 安装的主程序为
+  `install-cndv/bin/regcmMPICN`；
 - `make check`（该归档没有实质性自动测试用例）；
 - `ldd` 检查，无缺失动态库；
 - 二进制字符串检查，包含新增 history/restart 字段。
@@ -246,15 +249,110 @@ RefinedCN 和 ModifiedDV 的关键逻辑”，而不是“已经复现论文全�
 `Main/ocnlib` 因并发生成同一 `.mod` 文件而失败，所以安装文档推荐串行
 `make`。这不影响上述串行构建成功结论，也不应被误报为 CNDV 科学代码错误。
 
-这些结果证明当前源码能配置、编译、链接和安装，但尚未证明科学结果正确。
-仍需用户使用真实输入完成短程启动、restart 往返、多 MPI rank、长期 spin-up、
-热带非洲基准和观测对比。首个完整年结束后长期量就取该年值，代码不会自动等待
-积累满 20 个年度样本；稳定植被分布仍依赖足够长的连续积分。
+安装结果应以实际文件为准，不能依据旧文档猜测短后缀：
+
+```bash
+find install-cndv/bin -maxdepth 1 -type f -printf '%f\n' | sort
+test -x install-cndv/bin/regcmMPICN
+ldd install-cndv/bin/regcmMPICN
+strings install-cndv/bin/regcmMPICN | \
+  grep -E 'DROUGHT_DAYS|DROUGHT_DAYS20'
+```
+
+### 7.2 `huan` 集群的版本隔离部署
+
+服务器部署的是本 RegCM4.7 仓库快照，而不是 RegCM5 的分支或安装覆盖。其
+版本隔离根目录是：
+
+```text
+/public/home/elpt_2024_000795/packages/RegCM/RegCM-4.7-cndv
+├── source/
+├── install/
+└── logs/
+```
+
+服务器构建显式使用以下一致模块栈：
+
+```bash
+export LANG=C LC_ALL=C
+module purge
+module load compiler/intel/2021.3.0
+module load mpi/intelmpi/2021.3.0
+module load mathlib/hdf5/intel/1.8.20
+module load mathlib/netcdf/intel/4.4.1
+module load mathlib/zlib/intel/1.2.11
+hash -r
+```
+
+由于该归档的 VPATH 规则和部分旧 Fortran 模块依赖不完整，服务器必须在
+`source/` 内执行 in-source configure，并使用串行 `make`/`make install`：
+
+```bash
+root=/public/home/elpt_2024_000795/packages/RegCM/RegCM-4.7-cndv
+cd "$root/source"
+printf '%s\n' 'fbc6c6a2bd015a8565bc642ce768ba2416089095' > tag
+./bootstrap.sh
+CC=icc FC=ifort MPIFC=mpiifort ./configure \
+  --prefix="$root/install" \
+  --enable-clm45 --enable-cndv \
+  --with-netcdf=/public/software/mathlib/libs-intel/netcdf/4.4.1 \
+  --with-hdf5=/public/software/mathlib/libs-intel/hdf5/1.8.20
+make version
+make >"$root/logs/make.log" 2>&1
+make install >"$root/logs/install.log" 2>&1
+find "$root/install/bin" -maxdepth 1 -type f -printf '%f\n' | sort
+```
+
+服务器现有 PnetCDF 属于不同 Intel MPI 构建组合，因此本部署明确不使用
+`--enable-pnetcdf` 或 `--enable-parallel-nc`。这只是 ABI/构建边界，不改变
+CNDV 科学实现；MPI 主程序仍可使用上述普通 NetCDF 库。
+
+曾尝试的 out-of-source/VPATH 构建以及 `make -j4` 并行构建暴露的是旧构建系统
+的路径或依赖顺序问题，不能据此归因为 RefinedCN/ModifiedDV 算法错误。本次
+正式验收只认 in-source 串行构建的退出码、安装清单、`ldd` 结果和二进制字段。
+
+### 7.3 服务器 smoke test 状态与验收边界
+
+RegCM4.7 使用独立运行目录：
+
+```text
+/public/home/elpt_2024_000795/workdir_for_RCM/cndv_smoke_regcm47_fbc6c6a
+```
+
+其中 `preprocess.slurm` 使用 1 task 调用带完整 `CN_CNDV_CLM45` 后缀的四个
+前处理程序，`run.slurm` 使用 4 MPI tasks 调用
+`regcmMPICN_CNDV_CLM45`。两个作业均加载第 7.2 节的相同模块栈；前处理作业
+成功后才以 `afterok` 依赖提交积分作业。历史
+`/public/home/elpt_2024_000795/workdir_for_RCM/regcm5_run` 属于不同版本且现有
+内容不足以作为本测试输入，所以不复用也不修改。
+
+smoke namelist 显式设置 `create_crop_landunit=.false.`，并请求
+`DROUGHT_DAYS`、`DROUGHT_DAYS20` 日输出。验收至少包括：
+
+- Slurm 状态 `COMPLETED` 且退出码 `0:0`；
+- DOMAIN、CLM45 surface、SST 和指定时刻 ICBC 均非空且通过 `ncdump -h`；
+- 日志明确到达前处理和模型脚本结尾，并且无 `NaN`、`SIGSEGV`、`FATAL` 或
+  MPI abort；
+- CLM history-restart/年度 CNDV 文件存在，并能找到请求的干旱字段。
+
+实际服务器验收结果为：原位串行 `make`、`make install`、`make check` 均返回
+0；安装主程序 SHA256 为
+`ddd562a74732d43de28996138b30756dd2ed4a54614e680eb28e109f9436dacd`，
+`ldd` 无缺库，构建宏和新增字段均核对通过。前处理作业 `39224095` 为
+`COMPLETED 0:0`；4 MPI rank、24 小时积分作业 `39224117` 也为
+`COMPLETED 0:0`。8 个输出 NetCDF 均可读，restart/history-restart 中找到两项
+干旱状态/诊断，年度 CNDV 文件中找到 `FPCGRID` 和 `NIND`，日志有明确完成标记
+且未发现 NaN、段错误、FATAL 或 MPI abort。
+
+这些结果证明当前源码能配置、编译、链接、安装、完成前处理并在多 MPI rank 下
+做短程积分，但尚未证明科学结果正确。仍需跨年年度更新、restart 往返、长期
+spin-up、热带非洲基准和观测对比。首个完整年结束后长期量就取该年值，代码不会
+自动等待积累满 20 个年度样本；稳定植被分布仍依赖足够长的连续积分。
 
 ## 8. 与 RegCM5 文档的关系
 
 RegCM5 和本 RegCM4.7 归档分别保留独立源码、分支、安装目录和说明文档。两者
 科学规则一致，但构建兼容参数、可执行程序集合和少量源码接口不同。不要把 4.7
-的 GNU 兼容参数或旧手册程序名机械套用到 RegCM5。工作区总索引见：
-
-[CNDV 双版本说明索引](../../CNDV_VERSIONS_ZH.md)。
+的 GNU 兼容参数或旧手册程序名机械套用到 RegCM5。RegCM5 的实现位于独立的
+[RegCM5-cndv 仓库](https://github.com/weiguang1233/RegCM5-cndv)，不是本
+RegCM4.7 分支的子分支或升级分支。

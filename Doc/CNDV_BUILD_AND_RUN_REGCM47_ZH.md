@@ -8,9 +8,10 @@
 
 1. CNDV 是编译期功能。必须用 `--enable-clm45 --enable-cndv` 构建，并运行该
    构建生成的程序；namelist 中不存在 `enable_cndv=.true.`。
-2. 本次安装的程序名以 `CN` 为后缀，例如 `regcmMPICN`。这是本版本
-   `makeinc` 的命名方式；实际编译参数同时包含 `-DCLM45 -DCN -DCNDV`，不能
-   因文件名只有 `CN` 就认为 CNDV 未启用。
+2. 程序后缀会受 Make/配置环境影响。本机 GNU Make 4.4 的已验证安装使用
+   `CN`（如 `regcmMPICN`）；`huan` 服务器 GNU Make 3.82 的本次实际安装名称
+   使用 `CN_CNDV_CLM45`。无论名称如何，编译命令必须同时包含
+   `-DCLM45 -DCN -DCNDV`，安装后都要用 `find` 核实，不能照抄另一环境的名称。
 
 以下命令假定源码位于：
 
@@ -73,8 +74,9 @@ MPIFC=/usr/bin/mpifort
 
 这些参数用于兼容原有 RegCM4.7/RRTMG 源码，不改变本次 CNDV 科学算法。它们
 是 GNU Fortran 选项，不可直接用于 Intel 编译器。若使用 Intel 工具链，应让
-MPI、NetCDF-Fortran 和主编译器保持 ABI 一致，并重新完整构建；本机未验证
-Intel 版本。
+MPI、NetCDF-Fortran 和主编译器保持 ABI 一致，并重新完整构建。第 4.5 节记录
+了 `huan` 集群 Intel 2021.3 工具链的独立部署流程；其全量构建和 smoke test
+结果见第 4.5、8.1 和 13 节，不应与本机 GNU 构建结论混为一谈。
 
 ## 4. 配置、编译和安装
 
@@ -161,24 +163,98 @@ strings install-cndv/bin/regcmMPICN | \
 - `ldd` 没有 `not found`；
 - 二进制含 `DROUGHT_DAYS`、`DROUGHT_DAYS20` 和 CNDV 年度调用信息。
 
+### 4.5 `huan` 集群原生安装（Intel 2021.3）
+
+集群构建必须与本机安装隔离。此次 RegCM4.7 专用根目录为：
+
+```text
+/public/home/elpt_2024_000795/packages/RegCM/RegCM-4.7-cndv
+├── source/
+├── install/
+└── logs/
+```
+
+登录后显式加载同一套 Intel MPI、HDF5、NetCDF 和 zlib，避免继承个人 shell 中
+不兼容的模块：
+
+```bash
+ssh huan
+export LANG=C LC_ALL=C
+module purge
+module load compiler/intel/2021.3.0
+module load mpi/intelmpi/2021.3.0
+module load mathlib/hdf5/intel/1.8.20
+module load mathlib/netcdf/intel/4.4.1
+module load mathlib/zlib/intel/1.2.11
+hash -r
+```
+
+本归档的构建规则存在不完整的 VPATH 和 Fortran 模块依赖，因此必须在
+`source/` 内原位（in-source）配置并串行编译，不能使用独立 build 目录，也
+不要使用 `make -jN`：
+
+```bash
+root=/public/home/elpt_2024_000795/packages/RegCM/RegCM-4.7-cndv
+cd "$root/source"
+# 导出源码不含 .git；保留原始 4.7 checkver 所需的版本标识。
+printf '%s\n' 'fbc6c6a2bd015a8565bc642ce768ba2416089095' > tag
+./bootstrap.sh
+CC=icc FC=ifort MPIFC=mpiifort ./configure \
+  --prefix="$root/install" \
+  --enable-clm45 \
+  --enable-cndv \
+  --with-netcdf=/public/software/mathlib/libs-intel/netcdf/4.4.1 \
+  --with-hdf5=/public/software/mathlib/libs-intel/hdf5/1.8.20
+make version
+make >"$root/logs/make.log" 2>&1
+make install >"$root/logs/install.log" 2>&1
+```
+
+不要加入 `--enable-pnetcdf` 或 `--enable-parallel-nc`。集群现有 PnetCDF 与上述
+Intel MPI 2021.3 栈不是同一构建组合；混用可能在链接或运行阶段产生 ABI 问题，
+而 RegCM MPI 主程序可以配合普通 serial NetCDF 使用。
+
+安装完成后不要凭文档猜测程序名，应核对实际安装清单和链接：
+
+```bash
+find "$root/install/bin" -maxdepth 1 -type f -printf '%f\n' | sort
+test -x "$root/install/bin/regcmMPICN_CNDV_CLM45"
+ldd "$root/install/bin/regcmMPICN_CNDV_CLM45" | grep 'not found' && exit 1 || true
+strings "$root/install/bin/regcmMPICN_CNDV_CLM45" | \
+  grep -E 'DROUGHT_DAYS|DROUGHT_DAYS20'
+```
+
+本次服务器原位串行 `make`、`make install` 和 `make check` 的退出码均为 0。
+安装后的主程序为
+`install/bin/regcmMPICN_CNDV_CLM45`，SHA256 为：
+
+```text
+ddd562a74732d43de28996138b30756dd2ed4a54614e680eb28e109f9436dacd
+```
+
+`Main/clmlib/clm4.5/Makefile` 同时含 `-DCN -DCNDV -DCLM45`，`ldd` 没有
+`not found`，二进制字符串包含 `DROUGHT_DAYS`、`DROUGHT_DAYS20` 及其
+restart 字段名。`make check` 没有实质测试用例，所以仍需第 8.1 节的运行验收。
+
 ## 5. 安装后的程序
 
-本机 `install-cndv/bin` 中与标准耦合试验直接相关的程序为：
+本机 `install-cndv/bin` 中与标准耦合试验直接相关的程序如下；服务器列给出
+`huan` 本次构建的对应名称：
 
-| 程序 | 用途 |
-| --- | --- |
-| `terrainCN` | 生成区域 DOMAIN 和土地利用文件 |
-| `mksurfdataCN` | 生成 CLM4.5 区域 surface 文件 |
-| `sstCN` | 生成区域 SST 文件 |
-| `icbcCN` | 生成大气初始和侧边界文件 |
-| `regcmMPICN` | 大气—CLM4.5—CN—DV 耦合积分 |
-| `interpinicCN` | 在已有新网格 restart 中插入/插值旧 CLM 状态 |
-| `chem_icbcCN` | 仅化学试验需要的边界前处理 |
-| `clm45_1dto2dCN` | CLM4.5 一维子网格输出转换工具 |
+| 本机 GNU Make 4.4 | `huan` GNU Make 3.82 | 用途 |
+| --- | --- | --- |
+| `terrainCN` | `terrainCN_CNDV_CLM45` | 生成区域 DOMAIN 和土地利用文件 |
+| `mksurfdataCN` | `mksurfdataCN_CNDV_CLM45` | 生成 CLM4.5 区域 surface 文件 |
+| `sstCN` | `sstCN_CNDV_CLM45` | 生成区域 SST 文件 |
+| `icbcCN` | `icbcCN_CNDV_CLM45` | 生成大气初始和侧边界文件 |
+| `regcmMPICN` | `regcmMPICN_CNDV_CLM45` | 大气—CLM4.5—CN—DV 耦合积分 |
+| `interpinicCN` | `interpinicCN_CNDV_CLM45` | 插入/插值旧 CLM 状态 |
+| `chem_icbcCN` | `chem_icbcCN_CNDV_CLM45` | 仅化学试验需要的边界前处理 |
+| `clm45_1dto2dCN` | `clm45_1dto2dCN_CNDV_CLM45` | CLM4.5 一维子网格输出转换工具 |
 
-该 4.7 归档没有 RegCM5 中的 `clmbcCN` 和 `clmsaMPICN`，不要把 RegCM5 的
+该 4.7 归档没有 RegCM5 中对应的 `clmbc` 和 `clmsaMPI` 工具，不要把 RegCM5 的
 独立 CLM 流程套用到本版本。旧用户手册中的 `regcmMPICLM45` 也不是本次安装的
-实际文件名，应以 `install-cndv/bin` 为准。
+实际文件名，应以 `find install-cndv/bin -maxdepth 1 -type f` 的结果为准。
 
 ## 6. 输入数据布局
 
@@ -347,7 +423,8 @@ MPI 进程数应与网格大小匹配。可用 `njxcpus`、`niycpus` 指定二�
 两者乘积等于 MPI rank 数。当前 Codex 沙箱可能限制多进程 OpenMPI 的网络接口
 枚举；这种沙箱报错不等同于编译失败，应在正常终端或作业调度系统中运行。
 
-`interpinicCN` 不是每个新试验的标准步骤。它用于把旧 CLM 初始/restart 状态
+`interpinicCN` 不是每个新试验的标准步骤。它用于把旧 CLM
+初始/restart 状态
 插入一个已经存在的新网格 restart 文件，调用形式为：
 
 ```bash
@@ -355,6 +432,85 @@ MPI 进程数应与网格大小匹配。可用 `njxcpus`、`niycpus` 指定二�
 ```
 
 两个文件都必须存在，使用前应备份并检查网格/PFT 权重是否确实需要转换。
+
+### 8.1 `huan` 集群独立 smoke test
+
+RegCM4.7 smoke test 使用独立、带代码快照标识的目录：
+
+```text
+/public/home/elpt_2024_000795/workdir_for_RCM/cndv_smoke_regcm47_fbc6c6a
+├── cndv_smoke.in
+├── preprocess.slurm
+├── run.slurm
+├── input/
+├── output/
+└── logs/
+```
+
+不要复用或修改历史目录
+`/public/home/elpt_2024_000795/workdir_for_RCM/regcm5_run`。它属于另一版本，
+其中的程序链接、输入和输出不能作为本 RegCM4.7 快照的可复现证据。
+
+此次 smoke namelist 使用 34×64×18、60 km 小域，EIN15/ERSST 输入，前处理
+覆盖 1990-06-01 至 1990-06-03，积分窗口为 1990-06-01 至 1990-06-02。
+其中必须保留：
+
+```fortran
+create_crop_landunit = .false.,
+hist_nhtfrq = -24,
+hist_fincl1 = 'DROUGHT_DAYS:I', 'DROUGHT_DAYS20:I',
+```
+
+`preprocess.slurm` 使用 1 task，依次运行
+`terrainCN_CNDV_CLM45`、`mksurfdataCN_CNDV_CLM45`、
+`sstCN_CNDV_CLM45` 和 `icbcCN_CNDV_CLM45`，并对每个 NetCDF 文件执行
+`test -s` 与 `ncdump -h`。`run.slurm` 使用 4 MPI tasks，先明确检查下列文件：
+
+```text
+input/c47smoke_DOMAIN000.nc
+input/c47smoke_CLM45_surface.nc
+input/c47smoke_SST.nc
+input/c47smoke_ICBC.1990060100.nc
+```
+
+两个脚本都应加载第 4.5 节的相同模块栈。只在 Slurm 计算节点运行模型，不在
+登录节点直接执行 `mpirun`。构建和安装验收通过后提交：
+
+```bash
+run=/public/home/elpt_2024_000795/workdir_for_RCM/cndv_smoke_regcm47_fbc6c6a
+cd "$run"
+pre_job=$(sbatch --parsable preprocess.slurm)
+run_job=$(sbatch --parsable --dependency="afterok:$pre_job" run.slurm)
+squeue -j "$pre_job,$run_job"
+sacct -X -j "$pre_job,$run_job" \
+  --format=JobID,JobName,Partition,State,ExitCode,Elapsed
+```
+
+只有前处理日志含 `PREPROCESS_OK`、积分日志含 `MODEL_RUN_OK`、Slurm 状态为
+`COMPLETED` 且退出码为 `0:0`，并且输出 NetCDF 能被 `ncdump -h` 读取时，才能
+把链路 smoke test 记为通过。还应检查日志中不存在 `NaN`、`SIGSEGV`、
+`FATAL` 或 MPI abort，并确认 CLM history-restart 和年度 CNDV 文件实际生成。
+短积分通过只证明程序链路和基本数值启动，不证明 20 年植被约束或论文结果得到
+验证。
+
+本次实际结果如下：
+
+- 前处理作业 `39224095`：`COMPLETED`，退出码 `0:0`，耗时 20 秒；日志含
+  `PREPROCESS_OK`；
+- 4 MPI rank 积分作业 `39224117`：`COMPLETED`，退出码 `0:0`，耗时 18 秒；
+  完成 1990-06-01 00 UTC 至 1990-06-02 00 UTC 的 24 小时积分；
+- 日志含 `Writing initial CNDV FPCGRID`、`Written CNDV history dataset`、
+  `RegCM V4 simulation successfully reached end` 和 `MODEL_RUN_OK`；
+- DOMAIN、CLM45 surface、SST 和 ICBC 均非空并通过 `ncdump -h`；8 个模式
+  输出 NetCDF 也全部通过 `ncdump -h`；
+- CLM restart 含 `drought_days`、`drought_days20`，history-restart 含
+  `DROUGHT_DAYS`、`DROUGHT_DAYS20`，年度 CNDV 文件含 `FPCGRID`、`NIND`；
+- 对标准输出和错误日志按文本模式扫描，未发现 `NaN`、`SIGSEGV`、`FATAL`、
+  `MPI_Abort` 或 `Segmentation fault`。
+
+这是安装与基本数值链路 smoke test，不是跨年更新、restart 往返、长期
+spin-up 或论文科学结果验证。年度 `.hv.1991.nc` 的生成证明初始 CNDV 输出链路
+可用，但 24 小时试验没有触发完整日历年末的 ModifiedDV 更新。
 
 ## 9. 输出和 CNDV 诊断
 
@@ -441,19 +597,26 @@ create_crop_landunit = .false.,
 
 ### 缺少 CLM45 surface 或 PFT/SNICAR 文件
 
-确认先运行 `mksurfdataCN`，并检查 `inpglob/CLM45/{surface,pftdata,snicardata}`
+确认先运行 `mksurfdataCN`，并检查
+`inpglob/CLM45/{surface,pftdata,snicardata}`
 目录以及 `dirglob` 是否一致。
 
-### 程序名只有 `CN`
+### 找不到文档中的主程序名
 
-这是 4.7 的安装后缀逻辑。以生成 Makefile 中三个宏和二进制字符串检查为准，
-不要手工重命名或据此重复修改 Makefile。
+不同 Make/配置环境可能生成 `regcmMPICN` 或
+`regcmMPICN_CNDV_CLM45`。先用 `find` 核对安装目录；不要手工重命名，也不要
+据此重复修改生成的 Makefile。是否启用 CNDV 应结合三个预处理宏确认。
 
-## 13. 本次本机验证结论
+## 13. 本次验证结论
 
-已经验证：配置依赖检查、三个预处理宏、干净状态全量串行编译、安装、动态库解析和
-二进制字段；`make check` 成功但无实质用例。尚未执行依赖外部气象/地表数据的
-真实积分、多 rank 沙箱外运行、restart 数值等价性、长期 spin-up 或论文复现。
+本机已经验证：配置依赖检查、三个预处理宏、干净状态全量串行编译、安装、
+动态库解析和二进制字段；`make check` 成功但无实质用例。`huan` 集群又使用
+Intel/Intel MPI 完成原生构建、安装、四项前处理以及 4 MPI rank 的 24 小时
+积分，结果和作业号见第 4.5、8.1 节。
 
-RegCM5 的独立说明与本 4.7 文档同时保留，入口见
-[CNDV 双版本说明索引](../../CNDV_VERSIONS_ZH.md)。
+尚未执行跨年年度更新测试、restart 连续/分段数值等价性、长期 spin-up、
+阈值敏感性或论文热带非洲试验复现，因此不能把本次 smoke test 解释为科学
+验证完成。
+
+RegCM5 是独立仓库和独立分支，不是本 4.7 分支的后续提交；其说明见
+[RegCM5-cndv 仓库](https://github.com/weiguang1233/RegCM5-cndv)。

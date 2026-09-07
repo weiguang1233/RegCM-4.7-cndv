@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.nc
+common_input/
+preprocess_output/
+regcm47_smoke/output/
+regcm47_smoke/logs/
+regcm5_smoke/output/
+regcm5_smoke/logs/
+regcm47_full/output/
+regcm47_full/logs/
+regcm5_full/output/
+regcm5_full/logs/
+analysis/
+logs/
+server_results/

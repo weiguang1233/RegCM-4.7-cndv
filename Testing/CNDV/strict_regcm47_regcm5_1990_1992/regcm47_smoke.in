@@ -1,0 +1,112 @@
+! RegCM4.7 24-hour compatibility gate using the shared canonical input.
+ &dimparam
+ iy = 34,
+ jx = 64,
+ kz = 18,
+ nsg = 1,
+ njxcpus = 2,
+ niycpus = 2,
+ /
+ &geoparam
+ iproj = 'LAMCON',
+ ds = 60.0,
+ ptop = 5.0,
+ clat = 45.39,
+ clon = 13.48,
+ plat = 45.39,
+ plon = 13.48,
+ truelatl = 30.0,
+ truelath = 60.0,
+ i_band = 0,
+ /
+ &terrainparam
+ domname = 'cndvab',
+ lakedpth = .false.,
+ fudge_lnd = .false.,
+ fudge_lnd_s = .false.,
+ fudge_tex = .false.,
+ fudge_tex_s = .false.,
+ dirter = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_strict_compare_regcm47_regcm5_1990_1992/common_input',
+ inpter = '/public/home/elpt_2024_000795/data/INPUT/RCMdata',
+ /
+ &debugparam
+ debug_level = 0,
+ /
+ &boundaryparam
+ nspgx = 12,
+ nspgd = 12,
+ /
+ &globdatparam
+ ibdyfrq = 6,
+ ssttyp = 'ERSST',
+ dattyp = 'EIN15',
+ calendar = 'gregorian',
+ gdate1 = 1990010100,
+ gdate2 = 1992010200,
+ dirglob = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_strict_compare_regcm47_regcm5_1990_1992/common_input',
+ inpglob = '/public/home/elpt_2024_000795/data/INPUT/RCMdata',
+ /
+ &restartparam
+ ifrest = .false.,
+ mdate0 = 1990010100,
+ mdate1 = 1990010100,
+ mdate2 = 1990010200,
+ /
+ &timeparam
+ dtrad = 30.,
+ dtabem = 18.,
+ dtsrf = 600.,
+ dt = 150.,
+ /
+ &outparam
+ ifsave = .true.,
+ savfrq = 0.,
+ ifatm = .false.,
+ atmfrq = 24.,
+ ifrad = .false.,
+ radfrq = 24.,
+ ifsrf = .false.,
+ ifsts = .false.,
+ ifsub = .false.,
+ srffrq = 24.,
+ ifchem = .false.,
+ chemfrq = 24.,
+ dirout = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_strict_compare_regcm47_regcm5_1990_1992/regcm47_smoke/output',
+ /
+ &physicsparam
+ iboudy = 5,
+ ibltyp = 1,
+ icup_lnd = 4,
+ icup_ocn = 4,
+ ipptls = 1,
+ iocnflx = 2,
+ ipgf = 0,
+ iemiss = 0,
+ lakemod = 0,
+ ichem = 0,
+ idcsst = 0,
+ iseaice = 0,
+ idesseas = 0,
+ iconvlwp = 0,
+ /
+ &subexparam
+ /
+ &grellparam
+ /
+ &emanparam
+ /
+ &holtslagparam
+ /
+ &clm_inparm
+ fpftcon = 'pft-physiology.c130503.nc',
+ fsnowoptics = 'snicar_optics_5bnd_c090915.nc',
+ fsnowaging = 'snicar_drdt_bst_fit_60_c070416.nc',
+ create_crop_landunit = .false.,
+ hist_empty_htapes = .true.,
+ hist_nhtfrq = 0,
+ hist_fincl1 = 'DROUGHT_DAYS:I', 'DROUGHT_DAYS20:I',
+ /
+ &clm_soilhydrology_inparm
+ /
+ &clm_hydrology1_inparm
+ /

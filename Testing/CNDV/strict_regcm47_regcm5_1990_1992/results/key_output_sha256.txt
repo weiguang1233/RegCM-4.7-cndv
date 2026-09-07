@@ -1,0 +1,14 @@
+aabf46867ffb6f4c9bdd1b21ff05013b314829095f4c761da59a65be64012c55  regcm47_full/output/cndvab.clm.regcm.h0.199101.nc
+498b189671a3190b381736f719c08d67443e5a594994c7f285280cc7458bb1fc  regcm47_full/output/cndvab.clm.regcm.h0.199201.nc
+cceb52a226bc191d87cea54201d4d127538892c0d494f4170e5e368a7336e033  regcm47_full/output/cndvab.clm.regcm.hv.1991.nc
+ac76de7fe09ae8afd0af8797c53ceac5272d430dcfa812f4a985461cdb63c7b3  regcm47_full/output/cndvab.clm.regcm.hv.1992.nc
+f4d0d0cab403a6f63c3428e329eea46c353054944778da69b12434f43f467303  regcm47_full/output/cndvab.clm.regcm.hv.1993.nc
+7c350e552a02f1dbfbf079838c0fbbdd07348c2ec0c0d8ef42c90ad101b2ac15  regcm47_full/output/cndvab.clm.regcm.r.1991010100.nc
+30959a923f3c639f3e508fa658c8d75b377dff5f0ab25c7e6e348acc3d5ad9e1  regcm47_full/output/cndvab.clm.regcm.r.1992010100.nc
+4b571a95a9b8f32cf839ab4f49ab511df86198b6f0a6dafc52edb71c55e83304  regcm5_full/output/cndvab.clm.regcm.h0.199101.nc
+a4fd96d6ecd33d2e87ff445b617386704cede01570e55014b1f6d16b37badaa3  regcm5_full/output/cndvab.clm.regcm.h0.199201.nc
+0f5de97e1a6d5c78745d0595b91fd9d45bc01d87b55cd897159abaa6c665fdf7  regcm5_full/output/cndvab.clm.regcm.hv.1991.nc
+df589c0f67ecd3a362122a4fa81b135c7aa634e475afcea1c266a6b9f4e96dc5  regcm5_full/output/cndvab.clm.regcm.hv.1992.nc
+4290636144c7e335ab701192e58f8f6334c1ad14f0b34c54da387169f9e0e921  regcm5_full/output/cndvab.clm.regcm.hv.1993.nc
+b46424dee70b9d7291f0ccf6a41a526549ab1d7f1537cc62f4c1d96a68122aed  regcm5_full/output/cndvab.clm.regcm.r.1991010100.nc
+8c3220c8935ad9c963c855c21b4d181590a08e06a9683a8c8ba2b28543c17228  regcm5_full/output/cndvab.clm.regcm.r.1992010100.nc

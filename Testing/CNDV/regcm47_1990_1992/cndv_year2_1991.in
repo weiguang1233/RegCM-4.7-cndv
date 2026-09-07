@@ -1,0 +1,112 @@
+! RegCM4.7-CNDV second full-calendar-year continuation test.
+! Continues the accepted 1990 run from 1991-01-01 through 1992-01-01.
+ &dimparam
+ iy     = 34,
+ jx     = 64,
+ kz     = 18,
+ nsg    = 1,
+ /
+ &geoparam
+ iproj = 'LAMCON',
+ ds = 60.0,
+ ptop = 5.0,
+ clat = 45.39,
+ clon = 13.48,
+ plat = 45.39,
+ plon = 13.48,
+ truelatl = 30.0,
+ truelath = 60.0,
+ i_band = 0,
+ /
+ &terrainparam
+ domname = 'c47yr1990',
+ lakedpth = .false.,
+ fudge_lnd   = .false.,
+ fudge_lnd_s = .false.,
+ fudge_tex   = .false.,
+ fudge_tex_s = .false.,
+ dirter = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_year2_regcm47_1991/input',
+ inpter = '/public/home/elpt_2024_000795/data/INPUT/RCMdata',
+ /
+ &debugparam
+ debug_level = 0,
+ /
+ &boundaryparam
+ nspgx  = 12,
+ nspgd  = 12,
+ /
+ &globdatparam
+ ibdyfrq = 6,
+ ssttyp = 'ERSST',
+ dattyp = 'EIN15',
+ calendar = 'gregorian',
+ gdate1 = 1991010100,
+ gdate2 = 1992010200,
+ dirglob = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_year2_regcm47_1991/input',
+ inpglob = '/public/home/elpt_2024_000795/data/INPUT/RCMdata',
+ /
+ &restartparam
+ ifrest  = .true.,
+ ! Keep the original cold-start epoch so the second year ends with kyr=2.
+ mdate0  = 1990010100,
+ mdate1  = 1991010100,
+ mdate2  = 1992010100,
+ /
+ &timeparam
+ dtrad   = 30.,
+ dtabem  = 18.,
+ dtsrf   = 600.,
+ dt      = 150.,
+ /
+ &outparam
+ ifsave  = .true.,
+ savfrq  = 0.,
+ ifatm   = .false.,
+ atmfrq  = 24.,
+ ifrad   = .false.,
+ radfrq  = 24.,
+ ifsrf   = .false.,
+ ifsts   = .false.,
+ ifsub   = .false.,
+ srffrq  = 24.,
+ ifchem  = .false.,
+ chemfrq = 24.,
+ dirout = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_year2_regcm47_1991/output',
+ /
+ &physicsparam
+ iboudy  = 5,
+ ibltyp  = 1,
+ icup_lnd = 4,
+ icup_ocn = 4,
+ ipptls  = 1,
+ iocnflx = 2,
+ ipgf    = 0,
+ iemiss  = 0,
+ lakemod = 0,
+ ichem   = 0,
+ idcsst  = 0,
+ iseaice = 0,
+ idesseas = 0,
+ iconvlwp = 0,
+ /
+ &subexparam
+ /
+ &grellparam
+ /
+ &emanparam
+ /
+ &holtslagparam
+ /
+ &clm_inparm
+ fpftcon = 'pft-physiology.c130503.nc',
+ fsnowoptics = 'snicar_optics_5bnd_c090915.nc',
+ fsnowaging = 'snicar_drdt_bst_fit_60_c070416.nc',
+ create_crop_landunit = .false.,
+ hist_empty_htapes = .true.,
+ hist_nhtfrq = 0,
+ hist_fincl1 = 'DROUGHT_DAYS:I', 'DROUGHT_DAYS20:I',
+ /
+ &clm_soilhydrology_inparm
+ /
+ &clm_hydrology1_inparm
+ /

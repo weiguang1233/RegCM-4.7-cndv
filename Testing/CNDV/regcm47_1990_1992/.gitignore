@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.nc
+*.out
+*.err
+input/
+output/
+logs/
+analysis/

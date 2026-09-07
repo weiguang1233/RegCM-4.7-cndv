@@ -345,9 +345,33 @@ smoke namelist 显式设置 `create_crop_landunit=.false.`，并请求
 且未发现 NaN、段错误、FATAL 或 MPI abort。
 
 这些结果证明当前源码能配置、编译、链接、安装、完成前处理并在多 MPI rank 下
-做短程积分，但尚未证明科学结果正确。仍需跨年年度更新、restart 往返、长期
-spin-up、热带非洲基准和观测对比。首个完整年结束后长期量就取该年值，代码不会
+做短程积分，但尚未证明科学结果正确。后续完整年度测试见下一节；长期 spin-up、
+热带非洲基准和观测对比仍未完成。首个完整年结束后长期量就取该年值，代码不会
 自动等待积累满 20 个年度样本；稳定植被分布仍依赖足够长的连续积分。
+
+### 7.4 两整年年度更新与 restart 验收
+
+同一服务器二进制随后完成 1990 冷启动年和 1991 restart 年：
+
+- 年末 CNDV 分别恰好调用一次，`kyr=1`、`kyr=2`；
+- 第二年从同一时刻的 RegCM SAV、CLM restart 和 CLM history-restart 成套接续，
+  未重新执行初始 CNDV 写出；
+- 三份年度 HV 的 PFT 映射一致，PFT0—16 逐格闭合为 100%；
+- 同时刻 HV 与 restart 的 FPC/NIND 完全一致，restart 的
+  `fpcgrid-fpcgridold` 与相邻 HV 年度差完全一致；
+- 每年末 active-soil `drought_days` 清零；第二年 `drought_days20` 与
+  `(19*第一年值+第二年当年累计)/20` 的逐 column 复算最大差为
+  `6.78e-7` 天。
+
+配置、分析器及严格 gate 位于
+[`Testing/CNDV/regcm47_1990_1992`](../Testing/CNDV/regcm47_1990_1992/)，完整
+证据见[首年报告](CNDV_FIRST_YEAR_TEST_REGCM47_ZH.md)和
+[两整年报告](CNDV_TWO_YEAR_TEST_REGCM47_ZH.md)。
+
+工程验收通过，但该欧洲冷启动案例的自然目标覆盖由 47.16% 降至 3.88%，第二年末
+又降至 1.35%；初始作物 PFT15 也在首年归零，且目标 PFT4 始终没有样本。因此该
+结果不能验证生态合理性或 45 天 PFT4 规则；仍需自然植被初值、长期 spin-up、
+热带域和同网格 A/B 试验。
 
 ## 8. 与 RegCM5 文档的关系
 
@@ -356,3 +380,8 @@ RegCM5 和本 RegCM4.7 归档分别保留独立源码、分支、安装目录和
 的 GNU 兼容参数或旧手册程序名机械套用到 RegCM5。RegCM5 的实现位于独立的
 [RegCM5-cndv 仓库](https://github.com/weiguang1233/RegCM5-cndv)，不是本
 RegCM4.7 分支的子分支或升级分支。
+
+两仓库虽使用相同名义小域配置做了两整年工程测试，但各版本 terrain 生成的经纬度
+和 land mask 不完全相同，有效 soil gridcell 为 1193 对 1311。因此两个报告中的
+区域 PFT 均值只能各自在版本内部解释，不能直接相减并归因为 4.7/5 代码差异。
+严格版本对照必须固定同一 DOMAIN、surface、有效像元和权重。

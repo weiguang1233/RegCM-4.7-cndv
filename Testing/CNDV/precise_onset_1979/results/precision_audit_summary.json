@@ -1,0 +1,179 @@
+{
+  "annual_hv": {
+    "RegCM4.7": {
+      "FPC_WEIGHTED_NIND": {
+        "initial": 0.2761469684144092,
+        "post_dv": 0.03917414972280174,
+        "post_over_initial_pct": 14.18597855617728
+      },
+      "NATURAL_FPC_PCT": {
+        "initial": 47.16205644034646,
+        "post_dv": 5.210798847968914,
+        "post_over_initial_pct": 11.048710003898709
+      },
+      "WEIGHTED_NIND": {
+        "initial": 0.2760184408927606,
+        "post_dv": 0.2587168682957157,
+        "post_over_initial_pct": 93.73173308961377
+      }
+    },
+    "RegCM5": {
+      "FPC_WEIGHTED_NIND": {
+        "initial": 0.2761469684144092,
+        "post_dv": 0.0013469729730120174,
+        "post_over_initial_pct": 0.4877739490482608
+      },
+      "NATURAL_FPC_PCT": {
+        "initial": 47.16205644034646,
+        "post_dv": 0.23874445508548015,
+        "post_over_initial_pct": 0.506221469344661
+      },
+      "WEIGHTED_NIND": {
+        "initial": 0.2760184408927606,
+        "post_dv": 0.26000377651615597,
+        "post_over_initial_pct": 94.1979730322342
+      }
+    }
+  },
+  "annual_metrics": {
+    "ANNSUM_NPP": {
+      "regcm47": 229.21999691703292,
+      "regcm5": 5.812828756205788,
+      "regcm5_over_regcm47_pct": 2.53591695069683
+    },
+    "CUM_AR": {
+      "regcm47": 151.7539697382586,
+      "regcm5": 3.854163353582604,
+      "regcm5_over_regcm47_pct": 2.5397446671280934
+    },
+    "CUM_GPP": {
+      "regcm47": 380.97303729684154,
+      "regcm5": 9.666991717295248,
+      "regcm5_over_regcm47_pct": 2.5374477380043694
+    },
+    "CUM_NPP": {
+      "regcm47": 229.21906757617663,
+      "regcm5": 5.812828362741994,
+      "regcm5_over_regcm47_pct": 2.5359270606099167
+    },
+    "CUM_PRECIP": {
+      "regcm47": 650.5877133788057,
+      "regcm5": 621.4831563267655,
+      "regcm5_over_regcm47_pct": 95.52642073412568
+    },
+    "ELAI": {
+      "regcm47": 1.3353467264599563,
+      "regcm5": 0.01877919408233142,
+      "regcm5_over_regcm47_pct": 1.4063159560150806
+    },
+    "FROOTC": {
+      "regcm47": 43.11336864561773,
+      "regcm5": 1.3347376830921052,
+      "regcm5_over_regcm47_pct": 3.095878900262587
+    },
+    "LEAFC": {
+      "regcm47": 38.00184304674349,
+      "regcm5": 0.924086441532047,
+      "regcm5_over_regcm47_pct": 2.431688485201602
+    },
+    "TLAI": {
+      "regcm47": 1.3628699202564516,
+      "regcm5": 0.022298634603877533,
+      "regcm5_over_regcm47_pct": 1.6361528178479128
+    },
+    "TOTVEGC": {
+      "regcm47": 124.65416086193403,
+      "regcm5": 4.472293235466996,
+      "regcm5_over_regcm47_pct": 3.587760893453426
+    },
+    "TOTVEGN": {
+      "regcm47": 3.8656156813560023,
+      "regcm5": 0.14481668704692882,
+      "regcm5_over_regcm47_pct": 3.7462774104881844
+    },
+    "WOODC": {
+      "regcm47": 23.56425011497931,
+      "regcm5": 0.2999459627747211,
+      "regcm5_over_regcm47_pct": 1.2728856692284538
+    }
+  },
+  "checks": {
+    "daily_has_365_records_each": true,
+    "daily_timestamps_paired": true,
+    "dv_does_not_directly_rewrite_cn_pools": true,
+    "initial_core_state_matches": true,
+    "initial_hv_fpc_matches": true,
+    "initial_hv_nind_matches": true,
+    "lai_ablation_matches_regcm47_tlai": true,
+    "npp_balance_below_1e-10": true,
+    "startup_has_24_records_each": true,
+    "startup_timestamps_paired": true
+  },
+  "generated_utc": "2026-09-22T23:36:36+00:00",
+  "hour24_lai_ablation": {
+    "BTRAN": {
+      "RegCM4.7 baseline": 0.15029326003346422,
+      "RegCM5 + RegCM4.7 LAI": 0.05215701823681944,
+      "RegCM5 baseline": 0.0509894757954167,
+      "ablation_over_regcm47_pct": 34.7034978316434,
+      "ablation_over_regcm5_fold": 1.0228977141496263
+    },
+    "CUM_GPP": {
+      "RegCM4.7 baseline": 0.16716567570459548,
+      "RegCM5 + RegCM4.7 LAI": 0.04099480978313043,
+      "RegCM5 baseline": 7.744500870579238e-05,
+      "ablation_over_regcm47_pct": 24.52346129690753,
+      "ablation_over_regcm5_fold": 529.3408893382212
+    },
+    "CUM_NPP": {
+      "RegCM4.7 baseline": 0.09260227536398159,
+      "RegCM5 + RegCM4.7 LAI": 0.023348709995039088,
+      "RegCM5 baseline": 3.920118495983966e-05,
+      "ablation_over_regcm47_pct": 25.213970070675778,
+      "ablation_over_regcm5_fold": 595.612352508198
+    },
+    "ELAI": {
+      "RegCM4.7 baseline": 1.2860325997540132,
+      "RegCM5 + RegCM4.7 LAI": 1.3050372829992085,
+      "RegCM5 baseline": 0.0011099048704399268,
+      "ablation_over_regcm47_pct": 101.47777616592538,
+      "ablation_over_regcm5_fold": 1175.8100335949855
+    },
+    "TLAI": {
+      "RegCM4.7 baseline": 1.3529675133170347,
+      "RegCM5 + RegCM4.7 LAI": 1.3529590398128153,
+      "RegCM5 baseline": 0.0011173199071144498,
+      "ablation_over_regcm47_pct": 99.99937370970582,
+      "ablation_over_regcm5_fold": 1210.8967460419806
+    },
+    "TOTVEGC": {
+      "RegCM4.7 baseline": 0.6088476229033746,
+      "RegCM5 + RegCM4.7 LAI": 0.5219780461506391,
+      "RegCM5 baseline": 0.49342238102904523,
+      "ablation_over_regcm47_pct": 85.73213173790745,
+      "ablation_over_regcm5_fold": 1.0578726588405665
+    }
+  },
+  "initial_relative_difference": {
+    "LEAFC": 2.931916916015445e-09,
+    "NATURAL_FPC_PCT": 0.0,
+    "TOTVEGC": 3.209479994561417e-10,
+    "TOTVEGN": 6.618204869913441e-10
+  },
+  "maximum_absolute_daily_npp_balance_error": {
+    "RegCM4.7": 9.502944966848469e-14,
+    "RegCM5": 3.4022973562688455e-15
+  },
+  "maximum_dv_pool_relative_change": 3.319263818049171e-09,
+  "pass": true,
+  "record_counts": {
+    "daily": {
+      "RegCM4.7": 365,
+      "RegCM5": 365
+    },
+    "startup": {
+      "RegCM4.7": 24,
+      "RegCM5": 24
+    }
+  }
+}

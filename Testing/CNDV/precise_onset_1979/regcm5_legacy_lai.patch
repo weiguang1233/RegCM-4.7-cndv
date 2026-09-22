@@ -1,0 +1,62 @@
+diff --git a/Main/clmlib/clm4.5/mod_clm_cnvegstructupdate.F90 b/Main/clmlib/clm4.5/mod_clm_cnvegstructupdate.F90
+--- a/Main/clmlib/clm4.5/mod_clm_cnvegstructupdate.F90
++++ b/Main/clmlib/clm4.5/mod_clm_cnvegstructupdate.F90
+@@ -31,2 +31,2 @@
+-    !use mod_clm_pftvarcon, only : nbrdlf_evr_trp_tree, &
+-     ! nc4_grass, nc3_nonarctic_grass
++    use mod_clm_pftvarcon, only : nbrdlf_evr_trp_tree, &
++      nc4_grass, nc3_nonarctic_grass
+@@ -174,27 +174,38 @@ module mod_clm_cnvegstructupdate
+         ! To get reseanoable values for LAI or GPP for Savannah region
+         ! (as a  case study) BIOME-BGC model was used with multiplication
+         ! coefficient specific to PFT under study
+-        if ( modis_limited ) then
+-          if ( dsladlai(ivt(p)) > 0._rk8 ) then
+-            tlai(p) = (slatop(ivt(p)) * &
+-              (exp(leafc(p)*dsladlai(ivt(p))) - 1.0_rk8))/dsladlai(ivt(p))
++        if ( dsladlai(ivt(p)) > 0._rk8 ) then
++          if ( ivt(p) == nbrdlf_evr_trp_tree ) then
++            tlai(p) = (slatop(ivt(p)) * exp(0.05_rk8 * leafc(p) * &
++              dsladlai(ivt(p)) - 0.40_rk8)) / dsladlai(ivt(p))
+           else
+-             if ( ivt(p) >= npcropmin ) then
+-               tlai(p) = slatop(ivt(p)) * leafc(p)
+-             else
+-               tlai(p) = 0.25_rk8 * slatop(ivt(p)) * leafc(p)
+-             end if
++            tlai(p) = (slatop(ivt(p)) * exp(0.04_rk8 * leafc(p) * &
++              dsladlai(ivt(p)) - 0.30_rk8)) / dsladlai(ivt(p))
+           end if
+-          tlai(p) = max(0._rk8, tlai(p))
+         else
+-          if (dsladlai(ivt(p)) > 0.0_rk8) then
+-            tlai(p) = (slatop(ivt(p)) * &
+-              (exp(leafc(p)*dsladlai(ivt(p))) - 1.0_rk8))/dsladlai(ivt(p))
++          if (ivt(p) == nc4_grass .or. ivt(p) == nc3_nonarctic_grass) then
++            tlai(p) = 0.32_rk8 * slatop(ivt(p)) * leafc(p)
+           else
+-            tlai(p) = slatop(ivt(p)) * leafc(p)
++            if ( ivt(p) >= npcropmin ) then
++              tlai(p) = slatop(ivt(p)) * leafc(p)
++            else
++              tlai(p) = 0.40_rk8 * slatop(ivt(p)) * leafc(p)
++            end if
+           end if
+-          tlai(p) = max(0.0_rk8, tlai(p))
+         end if
++
++        ! RegCM4.7 legacy PFT minimum LAI constraint.
++        if ( ivt(p) == nbrdlf_evr_trp_tree ) then
++          tlai_min = 5._rk8
++        else if ( ivt(p) < nbrdlf_evr_trp_tree ) then
++          tlai_min = 4._rk8
++        else if ( ivt(p) == nc4_grass .or. &
++                  ivt(p) == nc3_nonarctic_grass ) then
++          tlai_min = 0.5_rk8
++        else
++          tlai_min = 1._rk8
++        end if
++        tlai(p) = max(tlai_min, tlai(p))
+ 
+         ! update the stem area index and height based on LAI,
+         ! stem mass, and veg type.

@@ -1,0 +1,13 @@
+{
+  "generated_utc": "2026-09-22T23:17:21Z",
+  "record_counts": {
+    "RegCM4.7 baseline": 24,
+    "RegCM5 baseline": 24,
+    "RegCM5 + RegCM4.7 LAI": 24
+  },
+  "experiment": "RegCM5 with only the RegCM4.7 legacy leafC-to-LAI block",
+  "outputs": [
+    "lai_ablation_comparison_long.csv",
+    "lai_ablation_snapshots.csv"
+  ]
+}

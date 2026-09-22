@@ -1,0 +1,8 @@
+regcm47_startup/
+regcm5_startup/
+regcm47_daily/
+regcm5_daily/
+regcm5_lai47_startup/
+logs/
+*.in
+__pycache__/

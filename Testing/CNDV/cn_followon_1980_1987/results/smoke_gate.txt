@@ -1,0 +1,4 @@
+SMOKE_GATE_OK version=regcm47 h2=cndvab.clm.regcm.h2.19800102_00000.nc
+SMOKE_GATE_OK version=regcm5 h2=cndvab.clm.regcm.h2.19800102_00000.nc
+HISTORY_RECONFIGURATION_PROBE_REJECTED_AS_EXPECTED: CLM requires unchanged history options on restart
+CNDV_CN_SMOKE_GATE_PASS

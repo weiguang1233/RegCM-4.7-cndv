@@ -2462,7 +2462,12 @@ module mod_clm_histfile
             write(stdout,*)  'Closing local history file ',trim(locfnh(t))
           end if
           call clm_closefile(nfid(t))
-          if ( .not. if_stop .and. nlomon ) then
+          ! A periodic model restart can close the history file on a day that
+          ! is not the end of a calendar month (for example savfrq=365 in a
+          ! leap year).  Reopen after every non-final close so the following
+          ! history sample is written to a valid NetCDF handle.  RegCM5/CLM4.5
+          ! uses the same condition.
+          if ( .not. if_stop ) then
             call clm_openfile(trim(locfnh(t)), nfid(t), clm_readwrite)
           end if
         else

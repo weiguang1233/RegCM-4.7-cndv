@@ -630,6 +630,28 @@ create_crop_landunit = .false.,
 `regcmMPICN_CNDV_CLM45`。先用 `find` 核对安装目录；不要手工重命名，也不要
 据此重复修改生成的 Makefile。是否启用 CNDV 应结合三个预处理宏确认。
 
+### 跨闰年后出现 `NetCDF: Variable not found` / `Error write time to file`
+
+若使用旧版 RegCM4.7 源码、`savfrq=365`，并从闰年 1 月 1 日连续积分，周期
+restart 会在第 365 天关闭 CLM 历史文件，而该时刻不是月末。旧代码只有月末才
+重新打开文件，所以下一个历史样本会写入已关闭的 NetCDF 句柄。这不是碳氮库
+数值发散，也不是 CNDV 年更新失败。
+
+本分支已把 `Main/clmlib/clm4.5/mod_clm_histfile.F90` 的重开条件修正为与
+RegCM5 一致的：
+
+```fortran
+if ( .not. if_stop ) then
+  call clm_openfile(trim(locfnh(t)), nfid(t), clm_readwrite)
+end if
+```
+
+修复后应重新串行编译（本归档的 Fortran 模块依赖不适合并行增量构建），并先做
+短试验：使用较短 `savfrq` 多次触发关闭/重开，确认无 NetCDF 错误，再把最终
+`SAV` 和 CLM restart 的所有数值状态与未触发故障的基准逐变量比较。不同运行目录
+会使 CLM restart 中的 `locfnh/locfnhr` 路径字符串不同；它们属于 I/O 元数据，
+不应被当作模式状态差异。
+
 ## 13. 本次验证结论
 
 本机已经验证：配置依赖检查、三个预处理宏、干净状态全量串行编译、安装、

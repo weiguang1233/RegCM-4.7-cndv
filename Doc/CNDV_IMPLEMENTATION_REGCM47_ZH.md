@@ -193,6 +193,12 @@ landunit 计入自然植被干旱统计。
 3. [mod_clm_cndvlight.F90](../Main/clmlib/clm4.5/mod_clm_cndvlight.F90)
    把 shrub 总 FPC 超额按各 shrub PFT 覆盖比例分摊。原公式得到无量纲比例却
    直接从 FPC 中扣除；新公式量纲一致，并使调整后的总量回到上限。
+4. [mod_clm_histfile.F90](../Main/clmlib/clm4.5/mod_clm_histfile.F90)
+   在任何非最终的周期 restart 关闭历史文件后重新打开它。旧条件额外要求当前时刻
+   是月末；当 `savfrq=365` 从闰年年初连续积分时，检查点落在
+   `1980-12-31 00:00`，文件被关闭却未重开，下一日写 `time` 时会报
+   `NetCDF: Variable not found`。修复条件与 RegCM5 同一 CLM4.5 例程一致，
+   只修正文件句柄生命周期，不改变 CNDV、CN、物理过程或时间积分。
 
 与 RegCM5 不同，本归档的 `mod_clm_cndecompcascadebgc.F90` 已把
 `implicit none` 放在合法位置，因此没有移植 RegCM5 针对该文件的预处理修复。

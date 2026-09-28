@@ -1,0 +1,15 @@
+BUILD_REGCM47=39717923
+BUILD_REGCM5=39717924
+regcm47_baseline_startup=39717928
+regcm47_baseline_month=39717929
+regcm47_ndepfix_startup=39717930
+regcm47_ndepfix_month=39717931
+regcm5_baseline_startup=39717932
+regcm5_baseline_month=39717933
+regcm5_ndepfix_startup=39717934
+regcm5_ndepfix_month=39717935
+regcm5_lai47_startup=39717936
+regcm5_lai47_month=39717937
+regcm5_lai47_ndepfix_startup=39717938
+regcm5_lai47_ndepfix_month=39717939
+ANALYSIS=39717940

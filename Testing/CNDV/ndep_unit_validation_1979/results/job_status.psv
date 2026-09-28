@@ -1,0 +1,15 @@
+39717923|cndv_ndep_build|cpu_single|COMPLETED|0:0|00:17:58|1|1
+39717924|cndv_ndep_build|cpu_single|COMPLETED|0:0|00:18:00|1|1
+39717928|regcm47_baseline_startup|cpu_parallel|COMPLETED|0:0|00:00:19|128|2
+39717929|regcm47_baseline_month|cpu_parallel|COMPLETED|0:0|00:02:25|128|2
+39717930|regcm47_ndepfix_startup|cpu_parallel|COMPLETED|0:0|00:00:18|128|2
+39717931|regcm47_ndepfix_month|cpu_parallel|COMPLETED|0:0|00:02:28|128|2
+39717932|regcm5_baseline_startup|cpu_parallel|COMPLETED|0:0|00:00:20|128|2
+39717933|regcm5_baseline_month|cpu_parallel|COMPLETED|0:0|00:02:43|128|2
+39717934|regcm5_ndepfix_startup|cpu_parallel|COMPLETED|0:0|00:00:19|128|2
+39717935|regcm5_ndepfix_month|cpu_parallel|COMPLETED|0:0|00:02:42|128|2
+39717936|regcm5_lai47_startup|cpu_parallel|COMPLETED|0:0|00:00:19|128|2
+39717937|regcm5_lai47_month|cpu_parallel|COMPLETED|0:0|00:02:47|128|2
+39717938|regcm5_lai47_ndepfix_startup|cpu_parallel|COMPLETED|0:0|00:00:20|128|2
+39717939|regcm5_lai47_ndepfix_month|cpu_parallel|COMPLETED|0:0|00:02:44|128|2
+39717940|cndv_ndep_analysis|cpu_single|COMPLETED|0:0|00:00:38|1|1

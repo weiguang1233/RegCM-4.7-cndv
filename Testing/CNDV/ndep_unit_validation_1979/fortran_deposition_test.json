@@ -1,0 +1,132 @@
+{
+  "RegCM4.7": {
+    "baseline": [
+      {
+        "days_per_year": 365.0,
+        "integrated_annual_input": [
+          0.0,
+          5300725.895945197,
+          31536000.0
+        ],
+        "input_multiplier": 31536000.0
+      },
+      {
+        "days_per_year": 365.2422,
+        "integrated_annual_input": [
+          0.0,
+          5304243.254334233,
+          31556926.080000002
+        ],
+        "input_multiplier": 31556926.080000002
+      },
+      {
+        "days_per_year": 360.0,
+        "integrated_annual_input": [
+          0.0,
+          5228113.212439098,
+          31104000.0
+        ],
+        "input_multiplier": 31104000.0
+      }
+    ],
+    "fixed": [
+      {
+        "days_per_year": 365.0,
+        "integrated_annual_input": [
+          0.0,
+          0.16808491552337634,
+          1.0
+        ],
+        "input_multiplier": 1.0
+      },
+      {
+        "days_per_year": 365.2422,
+        "integrated_annual_input": [
+          0.0,
+          0.16808491552337634,
+          1.0
+        ],
+        "input_multiplier": 1.0
+      },
+      {
+        "days_per_year": 360.0,
+        "integrated_annual_input": [
+          0.0,
+          0.16808491552337634,
+          1.0
+        ],
+        "input_multiplier": 1.0
+      }
+    ],
+    "source_file": "RegCM-4.7.1/Main/clmlib/clm4.5/mod_clm_cnndynamics.F90",
+    "source_sha256": "e134f517c737414f0b3b6ad185cefffaf04892a7b64eccedd769e8b40780c487",
+    "zero_input_checked": true,
+    "chemistry_column_mapping_unchanged": true
+  },
+  "RegCM5": {
+    "baseline": [
+      {
+        "days_per_year": 365.0,
+        "integrated_annual_input": [
+          0.0,
+          5300725.895945197,
+          31536000.0
+        ],
+        "input_multiplier": 31536000.0
+      },
+      {
+        "days_per_year": 365.2422,
+        "integrated_annual_input": [
+          0.0,
+          5304243.254334233,
+          31556926.080000002
+        ],
+        "input_multiplier": 31556926.080000002
+      },
+      {
+        "days_per_year": 360.0,
+        "integrated_annual_input": [
+          0.0,
+          5228113.212439098,
+          31104000.0
+        ],
+        "input_multiplier": 31104000.0
+      }
+    ],
+    "fixed": [
+      {
+        "days_per_year": 365.0,
+        "integrated_annual_input": [
+          0.0,
+          0.16808491552337634,
+          1.0
+        ],
+        "input_multiplier": 1.0
+      },
+      {
+        "days_per_year": 365.2422,
+        "integrated_annual_input": [
+          0.0,
+          0.16808491552337634,
+          1.0
+        ],
+        "input_multiplier": 1.0
+      },
+      {
+        "days_per_year": 360.0,
+        "integrated_annual_input": [
+          0.0,
+          0.16808491552337634,
+          1.0
+        ],
+        "input_multiplier": 1.0
+      }
+    ],
+    "source_file": "RegCM-cndv/Main/clmlib/clm4.5/mod_clm_cnndynamics.F90",
+    "source_sha256": "db7649e6ce3fd26222d9ed4acf5499164f20c0aba512a3be7023fb9a39eae255",
+    "zero_input_checked": true,
+    "chemistry_column_mapping_unchanged": true
+  },
+  "compiler": "GNU Fortran (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "pass": true
+}

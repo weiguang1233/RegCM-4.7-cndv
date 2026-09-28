@@ -1,0 +1,215 @@
+{
+  "pass": true,
+  "completed_jobs": 15,
+  "phases": {
+    "startup": {
+      "row_count": 144,
+      "contrasts": [
+        {
+          "reference": "regcm47_baseline",
+          "candidate": "regcm47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 12.003168803496035,
+            "CUM_NPP": -22.142422614599013,
+            "TOTVEGC": 81.41936669008294,
+            "TOTVEGN": 85.60408729277101,
+            "LEAFC": 76.23754295020953,
+            "TLAI": 99.99920636458283,
+            "BTRAN": 99.98264911064484
+          }
+        },
+        {
+          "reference": "regcm5_baseline",
+          "candidate": "regcm5_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 100.0,
+            "CUM_NPP": 100.0,
+            "TOTVEGC": 100.0,
+            "TOTVEGN": 100.0,
+            "LEAFC": 100.0,
+            "TLAI": 100.0,
+            "BTRAN": 100.0
+          }
+        },
+        {
+          "reference": "regcm5_lai47",
+          "candidate": "regcm5_lai47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 14.813542380310993,
+            "CUM_NPP": -15.01069190692232,
+            "TOTVEGC": 94.8547095519946,
+            "TOTVEGN": 96.14140206244494,
+            "LEAFC": 93.19420049635387,
+            "TLAI": 99.99982742365181,
+            "BTRAN": 100.14882092133507
+          }
+        },
+        {
+          "reference": "regcm47_ndepfix",
+          "candidate": "regcm5_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 0.38596721042617355,
+            "CUM_NPP": -0.19118437752101897,
+            "TOTVEGC": 99.53653308141584,
+            "TOTVEGN": 99.65111229806149,
+            "LEAFC": 99.4276702109023,
+            "TLAI": 0.08258356269708252,
+            "BTRAN": 33.93254258169074
+          }
+        },
+        {
+          "reference": "regcm47_ndepfix",
+          "candidate": "regcm5_lai47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 30.265285707541462,
+            "CUM_NPP": 17.092941593108893,
+            "TOTVEGC": 99.87914160800096,
+            "TOTVEGN": 99.90662297463243,
+            "LEAFC": 99.86711232320485,
+            "TLAI": 99.99999476981411,
+            "BTRAN": 34.76117526991159
+          }
+        },
+        {
+          "reference": "regcm5_ndepfix",
+          "candidate": "regcm5_lai47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 7841.4136978432525,
+            "CUM_NPP": -8940.553519457771,
+            "TOTVEGC": 100.34420379731822,
+            "TOTVEGN": 100.25640524293064,
+            "LEAFC": 100.44197164770172,
+            "TLAI": 121089.46563205958,
+            "BTRAN": 102.44199999521392
+          }
+        }
+      ]
+    },
+    "month": {
+      "row_count": 186,
+      "contrasts": [
+        {
+          "reference": "regcm47_baseline",
+          "candidate": "regcm47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 13.49611786612566,
+            "CUM_NPP": -13.414189468258252,
+            "TOTVEGC": 11.531005412272455,
+            "TOTVEGN": 14.408046502660994,
+            "LEAFC": 13.040155608200603,
+            "TLAI": 99.96280200810828,
+            "BTRAN": 100.27598009889648
+          }
+        },
+        {
+          "reference": "regcm5_baseline",
+          "candidate": "regcm5_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 97.34080259254495,
+            "CUM_NPP": 96.61871563800204,
+            "TOTVEGC": 99.89691095461575,
+            "TOTVEGN": 99.91872031696566,
+            "LEAFC": 99.95495262551957,
+            "TLAI": 99.95164619328443,
+            "BTRAN": 100.41228316084367
+          }
+        },
+        {
+          "reference": "regcm5_lai47",
+          "candidate": "regcm5_lai47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 13.441817720506506,
+            "CUM_NPP": -12.497205479929365,
+            "TOTVEGC": 13.984011644876022,
+            "TOTVEGN": 17.356875060522444,
+            "LEAFC": 15.81683843457797,
+            "TLAI": 99.9689548388673,
+            "BTRAN": 100.21220021084478
+          }
+        },
+        {
+          "reference": "regcm47_ndepfix",
+          "candidate": "regcm5_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 2.595599843669918,
+            "CUM_NPP": -2.6831225693033356,
+            "TOTVEGC": 82.7009284144313,
+            "TOTVEGN": 86.31394601813479,
+            "LEAFC": 85.72027709042136,
+            "TLAI": 0.25149082678167983,
+            "BTRAN": 89.06328946474468
+          }
+        },
+        {
+          "reference": "regcm47_ndepfix",
+          "candidate": "regcm5_lai47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 78.97703889751436,
+            "CUM_NPP": 74.50406254670061,
+            "TOTVEGC": 99.0031196290813,
+            "TOTVEGN": 99.27554714302288,
+            "LEAFC": 98.26740002461612,
+            "TLAI": 99.99996069556259,
+            "BTRAN": 88.34268410841348
+          }
+        },
+        {
+          "reference": "regcm5_ndepfix",
+          "candidate": "regcm5_lai47_ndepfix",
+          "candidate_over_reference_pct": {
+            "CUM_GPP": 3042.7278338038714,
+            "CUM_NPP": -2776.76701761878,
+            "TOTVEGC": 119.71222273703673,
+            "TOTVEGN": 115.01680982371589,
+            "LEAFC": 114.63728695249027,
+            "TLAI": 39762.866095459205,
+            "BTRAN": 99.19090642097107
+          }
+        }
+      ]
+    }
+  },
+  "baseline_reproduction": {
+    "RegCM4.7": {
+      "checked_values": 1608,
+      "max_absolute_difference": 0.0,
+      "max_relative_difference_nonzero": 0.0,
+      "pass": true
+    },
+    "RegCM5": {
+      "checked_values": 1608,
+      "max_absolute_difference": 0.0,
+      "max_relative_difference_nonzero": 0.0,
+      "pass": true
+    }
+  },
+  "corrected_first_hour": {
+    "regcm47_ndepfix": {
+      "datetime": "1979-01-01 01:00:00",
+      "LEAFC": 0.10651084125693518,
+      "TOTVEGC": 0.4934742933162001,
+      "TOTVEGN": 0.017622604098526975,
+      "TLAI": 1.352954200379307,
+      "FPG": 1.0,
+      "SMINN": 1.6033229644162868e-05
+    },
+    "regcm5_ndepfix": {
+      "datetime": "1979-01-01 01:00:00",
+      "LEAFC": 0.10651084094465424,
+      "TOTVEGC": 0.4934742931578205,
+      "TOTVEGN": 0.017622604086863974,
+      "TLAI": 0.001033657373217346,
+      "FPG": 1.0,
+      "SMINN": 1.589906291128645e-05
+    },
+    "regcm5_lai47_ndepfix": {
+      "datetime": "1979-01-01 01:00:00",
+      "LEAFC": 0.10651084089209657,
+      "TOTVEGC": 0.4934742928580486,
+      "TOTVEGN": 0.01762260408374135,
+      "TLAI": 1.352954200379307,
+      "FPG": 1.0,
+      "SMINN": 1.5899179487466097e-05
+    }
+  }
+}

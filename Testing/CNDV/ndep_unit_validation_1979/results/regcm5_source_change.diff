@@ -1,0 +1,20 @@
+--- /public/home/elpt_2024_000795/workdir_for_RCM/cndv_ndep_unit_validation_1979/analysis/regcm5_baseline_source_sha256.txt	2026-09-28 22:02:33.000000000 +0800
++++ /public/home/elpt_2024_000795/workdir_for_RCM/cndv_ndep_unit_validation_1979/analysis/regcm5_candidate_source_sha256.txt	2026-09-28 22:02:52.000000000 +0800
+@@ -456,7 +456,7 @@
+ 1e3999133f5495b735c9581a34b440025d271ccc885175501d38175bc2b240a1  ./Main/clmlib/clm4.5/mod_clm_cninispecial.F90
+ 0e3b01745f2c86201330394809c5f640101f4fb440daa43b3751fda32993eadd  ./Main/clmlib/clm4.5/mod_clm_cninitimevar.F90
+ 3d2d3a5914f49c22d18e1fb6544994bb810ec472b9ed2906ad3ee26f944e1a62  ./Main/clmlib/clm4.5/mod_clm_cnmresp.F90
+-db7649e6ce3fd26222d9ed4acf5499164f20c0aba512a3be7023fb9a39eae255  ./Main/clmlib/clm4.5/mod_clm_cnndynamics.F90
++a346a31eee48265ca4031f4c142d8923e8d97c22ac9aac9c73d17b8889b68423  ./Main/clmlib/clm4.5/mod_clm_cnndynamics.F90
+ 94cb030fdd221ade9be91b0d8be3a67980636cabbffb6f324170dea8f5c0fc2c  ./Main/clmlib/clm4.5/mod_clm_cnnitrifdenitrif.F90
+ 867a158eae4fb27f2985f1e5da5b3b30440b6bb4d60ed2ea456435bde137454a  ./Main/clmlib/clm4.5/mod_clm_cnnstateupdate1.F90
+ 4a7f7838403f09df6dac523e736b62fb9b0faee4ccfd530712098360710129d6  ./Main/clmlib/clm4.5/mod_clm_cnnstateupdate2.F90
+@@ -467,7 +467,7 @@
+ 85ffe2be4787ae0931209e71b7f53d2fed168cc6741584b15c96f5698e29edc3  ./Main/clmlib/clm4.5/mod_clm_cnsetvalue.F90
+ 29d82c7a10accb60608f681cb8b1796e35e53dd9ee439045e4046adc4e483c7f  ./Main/clmlib/clm4.5/mod_clm_cnsoillittverttransp.F90
+ 5153fd84ddf2c2251a5280eac0ac4977e4ed6b5b4385d56f4231ad72e42f0ed6  ./Main/clmlib/clm4.5/mod_clm_cnsummary.F90
+-64f7ba79f20531d4023a36b237e9282661b782a765f712232252c475487d238f  ./Main/clmlib/clm4.5/mod_clm_cnvegstructupdate.F90
++6c7ee4e83a6e716ac5126c099d9163fbf3e3ae012fdb81290ebd28faf961b5a0  ./Main/clmlib/clm4.5/mod_clm_cnvegstructupdate.F90
+ aa088266e886aee1d29fea121c6d7ad995937a07f8a49f207d0fff4148a116f8  ./Main/clmlib/clm4.5/mod_clm_cnverticalprofile.F90
+ 484d25dfb2319c24f3e98897277ed18d8be93de8acb55fef19a9e979605f2096  ./Main/clmlib/clm4.5/mod_clm_cnwoodproducts.F90
+ 6bd555f2cb24882023e681f495b2d158629d5dbc658a2febdedb4c1338441162  ./Main/clmlib/clm4.5/mod_clm_control.F90

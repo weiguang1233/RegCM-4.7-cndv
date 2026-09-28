@@ -1,0 +1,22 @@
+--- a/Main/clmlib/clm4.5/mod_clm_cnndynamics.F90
++++ b/Main/clmlib/clm4.5/mod_clm_cnndynamics.F90
+@@ -8,7 +8,7 @@
+   use mod_realkinds
+   use mod_dynparam , only : dayspy
+   use mod_runparams , only : dtsrf
+-  use mod_clm_varcon , only : dzsoi_decomp, zisoi
++  use mod_clm_varcon , only : dzsoi_decomp, zisoi, secspday
+   use mod_clm_varctl , only : ndep_nochem
+   implicit none
+ 
+@@ -64,7 +64,9 @@
+     ! Loop through columns
+     if ( ndep_nochem ) then
+       do c = lbc , ubc
+-        ndep_to_sminn(c) = ndep(c)
++        ! Surface NDEP is gN/m2/year; state updates integrate gN/m2/s.
++        ! Use the same calendar-year length as CNNFixation.
++        ndep_to_sminn(c) = ndep(c) / (secspday * dayspy)
+       end do
+     else
+       do c = lbc , ubc

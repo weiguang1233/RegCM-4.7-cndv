@@ -1,0 +1,128 @@
+! RegCM4.7 strict two-year comparison using the shared canonical input.
+ &dimparam
+ iy = 34,
+ jx = 64,
+ kz = 18,
+ nsg = 1,
+ njxcpus = 16,
+ niycpus = 8,
+ /
+ &geoparam
+ iproj = 'LAMCON',
+ ds = 60.0,
+ ptop = 5.0,
+ clat = 45.39,
+ clon = 13.48,
+ plat = 45.39,
+ plon = 13.48,
+ truelatl = 30.0,
+ truelath = 60.0,
+ i_band = 0,
+ /
+ &terrainparam
+ domname = 'cndvab',
+ lakedpth = .false.,
+ fudge_lnd = .false.,
+ fudge_lnd_s = .false.,
+ fudge_tex = .false.,
+ fudge_tex_s = .false.,
+ dirter = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_maxrun_regcm47_regcm5_1979_2016/common_input',
+ inpter = '/public/home/elpt_2024_000795/data/INPUT/RCMdata',
+ /
+ &debugparam
+ debug_level = 0,
+ /
+ &boundaryparam
+ nspgx = 12,
+ nspgd = 12,
+ /
+ &globdatparam
+ ibdyfrq = 6,
+ ssttyp = 'ERSST',
+ dattyp = 'EIN15',
+ calendar = 'gregorian',
+ gdate1 = 1979010100,
+ gdate2 = 2016010200,
+ dirglob = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_maxrun_regcm47_regcm5_1979_2016/common_input',
+ inpglob = '/public/home/elpt_2024_000795/data/INPUT/RCMdata',
+ /
+ &restartparam
+ ifrest = .false.,
+ mdate0 = 1979010100,
+ mdate1 = 1979010100,
+ mdate2 = 1979010200,
+ /
+ &timeparam
+ dtrad = 30.,
+ dtabem = 18.,
+ dtsrf = 600.,
+ dt = 150.,
+ /
+ &outparam
+ ifsave = .true.,
+ savfrq = 1.,
+ ifatm = .false.,
+ atmfrq = 24.,
+ ifrad = .false.,
+ radfrq = 24.,
+ ifsrf = .false.,
+ ifsts = .false.,
+ ifsub = .false.,
+ srffrq = 24.,
+ ifchem = .false.,
+ chemfrq = 24.,
+ dirout = '/public/home/elpt_2024_000795/workdir_for_RCM/cndv_ndep_unit_validation_1979/regcm47_baseline_startup/output',
+ /
+ &physicsparam
+ iboudy = 5,
+ ibltyp = 1,
+ icup_lnd = 4,
+ icup_ocn = 4,
+ ipptls = 1,
+ iocnflx = 2,
+ ipgf = 0,
+ iemiss = 0,
+ lakemod = 0,
+ ichem = 0,
+ idcsst = 0,
+ iseaice = 0,
+ idesseas = 0,
+ iconvlwp = 0,
+ /
+ &subexparam
+ /
+ &grellparam
+ /
+ &emanparam
+ /
+ &holtslagparam
+ /
+ &clm_inparm
+ fpftcon = 'pft-physiology.c130503.nc',
+ fsnowoptics = 'snicar_optics_5bnd_c090915.nc',
+ fsnowaging = 'snicar_drdt_bst_fit_60_c070416.nc',
+ create_crop_landunit = .false.,
+ hist_empty_htapes = .true.,
+ hist_nhtfrq = 1, 1, 1,
+ hist_dov2xy = .true., .false., .false.,
+ hist_type1d_pertape = ' ', 'PFTS', 'PFTS',
+ hist_avgflag_pertape = 'A', 'A', 'I',
+ hist_fincl1 = 'TBOT', 'QBOT', 'WIND', 'RAIN', 'SNOW',
+   'FSDS', 'FLDS', 'BTRAN', 'SOILWATER_10CM', 'FPG',
+   'SMINN', 'SMINN_TO_PLANT', 'NDEP_TO_SMINN', 'NFIX_TO_SMINN',
+   'GROSS_NMIN', 'DROUGHT_DAYS:I', 'DROUGHT_DAYS20:I', 'AGDD:I',
+ hist_fincl2 = 'FPSN', 'GPP', 'INIT_GPP', 'MR', 'GR', 'AR', 'NPP',
+   'AGNPP', 'BGNPP', 'AVAILC', 'PLANT_NDEMAND', 'PLANT_NALLOC',
+   'PLANT_CALLOC', 'EXCESS_CFLUX', 'DOWNREG',
+ hist_fincl3 = 'ELAI', 'TLAI', 'BTRAN', 'TOTVEGC', 'TOTVEGN',
+   'LEAFC', 'FROOTC', 'WOODC', 'CPOOL', 'XSMRPOOL',
+   'DISPVEGC', 'STORVEGC', 'DISPVEGN', 'STORVEGN',
+   'LEAFN', 'FROOTN', 'LIVESTEMN', 'DEADSTEMN',
+   'LIVECROOTN', 'DEADCROOTN', 'NPOOL', 'RETRANSN',
+   'ANNSUM_NPP', 'TEMPSUM_POTENTIAL_GPP', 'ANNSUM_POTENTIAL_GPP',
+
+ /
+ &clm_soilhydrology_inparm
+ /
+ &clm_hydrology1_inparm
+ /

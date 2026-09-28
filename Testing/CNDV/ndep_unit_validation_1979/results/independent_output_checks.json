@@ -1,0 +1,163 @@
+{
+  "method": "Independent raw NetCDF reads, math.fsum, natural PFT 1-14 and soil/crop column weighting",
+  "scope": "All 12 runs: surface input, NDEP, FPG minimum, cumulative NPP, final C/N/LAI, restart mineral N",
+  "pass": true,
+  "checks": {
+    "regcm47_baseline_startup": {
+      "records": 24,
+      "cumulative_ndep_gN_m2": 14522.536710751529,
+      "cumulative_npp_gC_m2": 0.09260227536398159,
+      "final_states": {
+        "TOTVEGC": 0.6088476229033746,
+        "TOTVEGN": 0.020657445364299934,
+        "LEAFC": 0.14413399290607462,
+        "TLAI": 1.3529675133170345
+      },
+      "restart_mineral_n_gN_m2": 11563.937467721878,
+      "pass": true
+    },
+    "regcm47_ndepfix_startup": {
+      "records": 24,
+      "cumulative_ndep_gN_m2": 0.00046020124555247905,
+      "cumulative_npp_gC_m2": -0.02050438716182751,
+      "final_states": {
+        "TOTVEGC": 0.49571987867555195,
+        "TOTVEGN": 0.017683617562111797,
+        "LEAFC": 0.10988421474762058,
+        "TLAI": 1.3529567756876661
+      },
+      "restart_mineral_n_gN_m2": 0.0002745898320325374,
+      "pass": true
+    },
+    "regcm5_baseline_startup": {
+      "records": 24,
+      "cumulative_ndep_gN_m2": 14522.536710751529,
+      "cumulative_npp_gC_m2": 3.920118495983965e-05,
+      "final_states": {
+        "TOTVEGC": 0.4934223810290451,
+        "TOTVEGN": 0.01762192159517975,
+        "LEAFC": 0.1092553146531039,
+        "TLAI": 0.00111731990711445
+      },
+      "restart_mineral_n_gN_m2": 11563.942022898125,
+      "pass": true
+    },
+    "regcm5_ndepfix_startup": {
+      "records": 24,
+      "cumulative_ndep_gN_m2": 0.00046020124555247905,
+      "cumulative_npp_gC_m2": 3.920118495983965e-05,
+      "final_states": {
+        "TOTVEGC": 0.4934223810290451,
+        "TOTVEGN": 0.01762192159517975,
+        "LEAFC": 0.1092553146531039,
+        "TLAI": 0.00111731990711445
+      },
+      "restart_mineral_n_gN_m2": 0.00036739407920927597,
+      "pass": true
+    },
+    "regcm5_lai47_startup": {
+      "records": 24,
+      "cumulative_ndep_gN_m2": 14522.536710751529,
+      "cumulative_npp_gC_m2": 0.023348709995039085,
+      "final_states": {
+        "TOTVEGC": 0.5219780461506393,
+        "TOTVEGN": 0.01837616754806626,
+        "LEAFC": 0.11775216867896332,
+        "TLAI": 1.3529590398128155
+      },
+      "restart_mineral_n_gN_m2": 11563.940626971947,
+      "pass": true
+    },
+    "regcm5_lai47_ndepfix_startup": {
+      "records": 24,
+      "cumulative_ndep_gN_m2": 0.00046020124555247905,
+      "cumulative_npp_gC_m2": -0.0035048029215960968,
+      "final_states": {
+        "TOTVEGC": 0.49512075960136515,
+        "TOTVEGN": 0.01766710512605492,
+        "LEAFC": 0.10973819216747788,
+        "TLAI": 1.3529567049255116
+      },
+      "restart_mineral_n_gN_m2": 0.00029375283684686247,
+      "pass": true
+    },
+    "regcm47_baseline_month": {
+      "records": 31,
+      "cumulative_ndep_gN_m2": 450198.6380332974,
+      "cumulative_npp_gC_m2": 4.153355327161439,
+      "final_states": {
+        "TOTVEGC": 5.319918585353205,
+        "TOTVEGN": 0.14489162286083088,
+        "LEAFC": 1.6592895437211252,
+        "TLAI": 1.3535093386554957
+      },
+      "restart_mineral_n_gN_m2": 29040.659859999894,
+      "pass": true
+    },
+    "regcm47_ndepfix_month": {
+      "records": 31,
+      "cumulative_ndep_gN_m2": 0.01426623861212685,
+      "cumulative_npp_gC_m2": -0.557138952875433,
+      "final_states": {
+        "TOTVEGC": 0.6134401000055664,
+        "TOTVEGN": 0.020876052400248698,
+        "LEAFC": 0.21637393849183648,
+        "TLAI": 1.3530058603614492
+      },
+      "restart_mineral_n_gN_m2": 0.0004037047607564098,
+      "pass": true
+    },
+    "regcm5_baseline_month": {
+      "records": 31,
+      "cumulative_ndep_gN_m2": 450198.6380332974,
+      "cumulative_npp_gC_m2": 0.015471868869576844,
+      "final_states": {
+        "TOTVEGC": 0.5078441896982185,
+        "TOTVEGN": 0.018033602254220096,
+        "LEAFC": 0.185559929502989,
+        "TLAI": 0.003404331748621275
+      },
+      "restart_mineral_n_gN_m2": 29040.686438101122,
+      "pass": true
+    },
+    "regcm5_ndepfix_month": {
+      "records": 31,
+      "cumulative_ndep_gN_m2": 0.01426623861212685,
+      "cumulative_npp_gC_m2": 0.014948720986981011,
+      "final_states": {
+        "TOTVEGC": 0.5073206579710192,
+        "TOTVEGN": 0.018018944599468196,
+        "LEAFC": 0.18547633962666016,
+        "TLAI": 0.0034026856246275887
+      },
+      "restart_mineral_n_gN_m2": 0.0008123770101616145,
+      "pass": true
+    },
+    "regcm5_lai47_month": {
+      "records": 31,
+      "cumulative_ndep_gN_m2": 450198.6380332974,
+      "cumulative_npp_gC_m2": 3.3214717849441273,
+      "final_states": {
+        "TOTVEGC": 4.342994353010289,
+        "TOTVEGN": 0.1194040699719552,
+        "LEAFC": 1.3442954770402138,
+        "TLAI": 1.3534255016979209
+      },
+      "restart_mineral_n_gN_m2": 29040.662761834763,
+      "pass": true
+    },
+    "regcm5_lai47_ndepfix_month": {
+      "records": 31,
+      "cumulative_ndep_gN_m2": 0.01426623861212685,
+      "cumulative_npp_gC_m2": -0.4150911539223453,
+      "final_states": {
+        "TOTVEGC": 0.6073248360612666,
+        "TOTVEGN": 0.020724815242211057,
+        "LEAFC": 0.2126250436867898,
+        "TLAI": 1.3530053285701078
+      },
+      "restart_mineral_n_gN_m2": 0.00039136801258726235,
+      "pass": true
+    }
+  }
+}
